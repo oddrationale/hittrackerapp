@@ -1,7 +1,15 @@
+import { useLocation } from "preact-iso";
 import { settings, updateSettings } from "../stores/settings-store.ts";
 import { PageHeader } from "../components/layout/page-header.tsx";
+import { ExerciseManager } from "../components/settings/exercise-manager.tsx";
 
 export function SettingsPage() {
+  const { path } = useLocation();
+
+  if (path === "/settings/exercises") {
+    return <ExerciseManager />;
+  }
+
   return (
     <div>
       <PageHeader title="Settings" />
