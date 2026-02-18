@@ -3,6 +3,7 @@ import { settings, updateSettings } from "../stores/settings-store.ts";
 import { PageHeader } from "../components/layout/page-header.tsx";
 import { ExerciseManager } from "../components/settings/exercise-manager.tsx";
 import { RoutineManager } from "../components/settings/routine-manager.tsx";
+import { DataManager } from "../components/settings/data-manager.tsx";
 
 export function SettingsPage() {
   const { path } = useLocation();
@@ -144,15 +145,7 @@ export function SettingsPage() {
 
         {/* Data Management */}
         <div class="rounded-lg bg-white p-4 shadow-sm">
-          <h2 class="mb-3 text-sm font-medium text-gray-700">Data</h2>
-          <div class="flex gap-2">
-            <button class="flex-1 rounded-lg bg-gray-100 py-2 text-sm font-medium text-gray-700">
-              Export Data
-            </button>
-            <button class="flex-1 rounded-lg bg-gray-100 py-2 text-sm font-medium text-gray-700">
-              Import Data
-            </button>
-          </div>
+          <DataManager />
         </div>
       </div>
     </div>
