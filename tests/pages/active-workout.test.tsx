@@ -21,6 +21,7 @@ import { WorkoutPage } from "../../src/pages/workout-page.tsx";
 import {
   activeWorkout,
   currentExerciseIndex,
+  lastCompletedWorkout,
   startWorkout,
 } from "../../src/stores/workout-store.ts";
 import { exercises } from "../../src/stores/exercise-store.ts";
@@ -83,6 +84,7 @@ describe("Active Workout Flow", () => {
   beforeEach(() => {
     activeWorkout.value = null;
     currentExerciseIndex.value = 0;
+    lastCompletedWorkout.value = null;
     exercises.value = [];
     routines.value = [];
   });

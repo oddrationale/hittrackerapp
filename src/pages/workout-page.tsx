@@ -4,6 +4,7 @@ import { useLocation } from "preact-iso";
 import { PageHeader } from "../components/layout/page-header.tsx";
 import { ExerciseCard } from "../components/workout/exercise-card.tsx";
 import { ExercisePicker } from "../components/workout/exercise-picker.tsx";
+import { WorkoutSummary } from "../components/workout/workout-summary.tsx";
 import { routines } from "../stores/routine-store.ts";
 import { exercises } from "../stores/exercise-store.ts";
 import {
@@ -145,9 +146,16 @@ function ActiveWorkout() {
 }
 
 export function WorkoutPage() {
+  const { path } = useLocation();
+
   // If workout is active, show active workout view
   if (isWorkoutActive.value) {
     return <ActiveWorkout />;
+  }
+
+  // Show summary after finishing a workout
+  if (path === "/workout/summary") {
+    return <WorkoutSummary />;
   }
 
   return (

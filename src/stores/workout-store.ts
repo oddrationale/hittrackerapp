@@ -4,6 +4,7 @@ import type { Workout, ExerciseLog } from "../types/index.ts";
 
 export const activeWorkout = signal<Workout | null>(null);
 export const currentExerciseIndex = signal(0);
+export const lastCompletedWorkout = signal<Workout | null>(null);
 export const isWorkoutActive = computed(() => activeWorkout.value !== null);
 
 export function startWorkout(routineId?: string): void {
@@ -54,6 +55,7 @@ export async function finishWorkout(): Promise<Workout | null> {
     lastModified: now,
   };
   await db.workouts.add(completed);
+  lastCompletedWorkout.value = completed;
   activeWorkout.value = null;
   currentExerciseIndex.value = 0;
   return completed;
