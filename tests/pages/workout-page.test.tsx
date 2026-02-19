@@ -62,9 +62,7 @@ describe("WorkoutPage", () => {
   it("shows 'Freeform Workout' option", () => {
     renderWorkoutPage();
     expect(screen.getByText("Freeform Workout")).toBeInTheDocument();
-    expect(
-      screen.getByText("Choose exercises as you go"),
-    ).toBeInTheDocument();
+    expect(screen.getByText("Choose exercises as you go")).toBeInTheDocument();
   });
 
   it("shows no routines section when none exist", () => {

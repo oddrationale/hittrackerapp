@@ -84,12 +84,12 @@ effect(() => {
 
 ## Hook Variants (inside components)
 
-| Hook                  | Equivalent        | Purpose                          |
-| --------------------- | ----------------- | -------------------------------- |
-| `useSignal(init)`     | `signal(init)`    | Component-local mutable signal   |
-| `useComputed(fn)`     | `computed(fn)`    | Component-local derived signal   |
-| `useSignalEffect(fn)` | `effect(fn)`      | Side effect tied to component    |
-| `useModel(Model)`     | `new Model()`     | Model instance with auto-dispose |
+| Hook                  | Equivalent     | Purpose                          |
+| --------------------- | -------------- | -------------------------------- |
+| `useSignal(init)`     | `signal(init)` | Component-local mutable signal   |
+| `useComputed(fn)`     | `computed(fn)` | Component-local derived signal   |
+| `useSignalEffect(fn)` | `effect(fn)`   | Side effect tied to component    |
+| `useModel(Model)`     | `new Model()`  | Model instance with auto-dispose |
 
 ```jsx
 import { useSignal, useComputed } from "@preact/signals";

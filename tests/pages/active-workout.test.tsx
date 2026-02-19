@@ -4,11 +4,9 @@ import { LocationProvider } from "preact-iso";
 
 // Mock ExerciseTimer to avoid fake timer complexity
 vi.mock("../../src/components/timer/exercise-timer.tsx", () => ({
-  ExerciseTimer: ({
-    onComplete,
-  }: {
-    onComplete: (tul: number) => void;
-  }) => <button onClick={() => onComplete(90)}>Mock Timer Complete</button>,
+  ExerciseTimer: ({ onComplete }: { onComplete: (tul: number) => void }) => (
+    <button onClick={() => onComplete(90)}>Mock Timer Complete</button>
+  ),
 }));
 
 // Mock wake-lock to avoid navigator.wakeLock issues in jsdom

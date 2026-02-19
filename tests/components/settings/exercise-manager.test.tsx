@@ -90,9 +90,7 @@ describe("ExerciseManager", () => {
     fireEvent.click(addButton);
 
     // Form should now be visible
-    expect(
-      screen.getByPlaceholderText(/exercise name/i),
-    ).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/exercise name/i)).toBeInTheDocument();
   });
 
   it("add form has name and category fields", () => {
@@ -100,12 +98,8 @@ describe("ExerciseManager", () => {
 
     fireEvent.click(screen.getByRole("button", { name: /add exercise/i }));
 
-    expect(
-      screen.getByPlaceholderText(/exercise name/i),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByPlaceholderText(/category/i),
-    ).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/exercise name/i)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/category/i)).toBeInTheDocument();
   });
 
   it("submitting the form with name adds an exercise", async () => {

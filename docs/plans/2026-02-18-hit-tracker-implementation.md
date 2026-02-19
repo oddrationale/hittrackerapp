@@ -17,11 +17,13 @@
 ### Task 1: Install Dependencies
 
 **Files:**
+
 - Modify: `package.json`
 
 **Step 1: Install production dependencies**
 
 Run:
+
 ```bash
 pnpm add dexie preact-iso chart.js
 ```
@@ -29,6 +31,7 @@ pnpm add dexie preact-iso chart.js
 **Step 2: Install dev dependencies**
 
 Run:
+
 ```bash
 pnpm add -D vite-plugin-pwa fake-indexeddb
 ```
@@ -40,6 +43,7 @@ pnpm add -D vite-plugin-pwa fake-indexeddb
 Modify: `tests/test-setup.ts`
 
 Add at the top:
+
 ```typescript
 import "fake-indexeddb/auto";
 ```
@@ -63,6 +67,7 @@ git commit -m "feat: add dexie, preact-iso, chart.js, and vite-plugin-pwa depend
 ### Task 2: Define TypeScript Types
 
 **Files:**
+
 - Create: `src/types/index.ts`
 - Test: `tests/types.test.ts`
 
@@ -241,6 +246,7 @@ git commit -m "feat: define TypeScript types for HIT tracker data model"
 ### Task 3: Dexie Database Setup
 
 **Files:**
+
 - Create: `src/db/database.ts`
 - Create: `src/db/seed.ts`
 - Test: `tests/db/database.test.ts`
@@ -304,10 +310,31 @@ describe("Database", () => {
   it("queries workouts by date", async () => {
     const now = Date.now();
     await db.workouts.bulkAdd([
-      { id: "wk-1", date: "2026-02-15", startTime: now, exerciseLogs: [], totalTul: 0, totalTime: 0, tulRatio: 0, lastModified: now },
-      { id: "wk-2", date: "2026-02-18", startTime: now, exerciseLogs: [], totalTul: 0, totalTime: 0, tulRatio: 0, lastModified: now },
+      {
+        id: "wk-1",
+        date: "2026-02-15",
+        startTime: now,
+        exerciseLogs: [],
+        totalTul: 0,
+        totalTime: 0,
+        tulRatio: 0,
+        lastModified: now,
+      },
+      {
+        id: "wk-2",
+        date: "2026-02-18",
+        startTime: now,
+        exerciseLogs: [],
+        totalTul: 0,
+        totalTime: 0,
+        tulRatio: 0,
+        lastModified: now,
+      },
     ]);
-    const results = await db.workouts.where("date").equals("2026-02-18").toArray();
+    const results = await db.workouts
+      .where("date")
+      .equals("2026-02-18")
+      .toArray();
     expect(results).toHaveLength(1);
     expect(results[0].id).toBe("wk-2");
   });
@@ -324,7 +351,12 @@ Expected: FAIL (module not found)
 ```typescript
 // src/db/database.ts
 import Dexie from "dexie";
-import type { Exercise, Routine, Workout, UserSettings } from "../types/index.ts";
+import type {
+  Exercise,
+  Routine,
+  Workout,
+  UserSettings,
+} from "../types/index.ts";
 
 export class HitTrackerDB extends Dexie {
   exercises!: Dexie.Table<Exercise, string>;
@@ -359,18 +391,78 @@ import { db } from "./database.ts";
 import type { Exercise } from "../types/index.ts";
 
 const DEFAULT_EXERCISES: Exercise[] = [
-  { id: "ex-chest-press", name: "Chest Press", category: "Upper Body Push", lastModified: 0 },
-  { id: "ex-overhead-press", name: "Overhead Press", category: "Upper Body Push", lastModified: 0 },
-  { id: "ex-seated-row", name: "Seated Row", category: "Upper Body Pull", lastModified: 0 },
-  { id: "ex-pulldown", name: "Pulldown", category: "Upper Body Pull", lastModified: 0 },
-  { id: "ex-leg-press", name: "Leg Press", category: "Lower Body", lastModified: 0 },
-  { id: "ex-leg-curl", name: "Leg Curl", category: "Lower Body", lastModified: 0 },
-  { id: "ex-leg-extension", name: "Leg Extension", category: "Lower Body", lastModified: 0 },
-  { id: "ex-chest-fly", name: "Chest Fly", category: "Upper Body Push", lastModified: 0 },
-  { id: "ex-lateral-raise", name: "Lateral Raise", category: "Upper Body Push", lastModified: 0 },
-  { id: "ex-bicep-curl", name: "Bicep Curl", category: "Arms", lastModified: 0 },
-  { id: "ex-tricep-extension", name: "Tricep Extension", category: "Arms", lastModified: 0 },
-  { id: "ex-calf-raise", name: "Calf Raise", category: "Lower Body", lastModified: 0 },
+  {
+    id: "ex-chest-press",
+    name: "Chest Press",
+    category: "Upper Body Push",
+    lastModified: 0,
+  },
+  {
+    id: "ex-overhead-press",
+    name: "Overhead Press",
+    category: "Upper Body Push",
+    lastModified: 0,
+  },
+  {
+    id: "ex-seated-row",
+    name: "Seated Row",
+    category: "Upper Body Pull",
+    lastModified: 0,
+  },
+  {
+    id: "ex-pulldown",
+    name: "Pulldown",
+    category: "Upper Body Pull",
+    lastModified: 0,
+  },
+  {
+    id: "ex-leg-press",
+    name: "Leg Press",
+    category: "Lower Body",
+    lastModified: 0,
+  },
+  {
+    id: "ex-leg-curl",
+    name: "Leg Curl",
+    category: "Lower Body",
+    lastModified: 0,
+  },
+  {
+    id: "ex-leg-extension",
+    name: "Leg Extension",
+    category: "Lower Body",
+    lastModified: 0,
+  },
+  {
+    id: "ex-chest-fly",
+    name: "Chest Fly",
+    category: "Upper Body Push",
+    lastModified: 0,
+  },
+  {
+    id: "ex-lateral-raise",
+    name: "Lateral Raise",
+    category: "Upper Body Push",
+    lastModified: 0,
+  },
+  {
+    id: "ex-bicep-curl",
+    name: "Bicep Curl",
+    category: "Arms",
+    lastModified: 0,
+  },
+  {
+    id: "ex-tricep-extension",
+    name: "Tricep Extension",
+    category: "Arms",
+    lastModified: 0,
+  },
+  {
+    id: "ex-calf-raise",
+    name: "Calf Raise",
+    category: "Lower Body",
+    lastModified: 0,
+  },
 ];
 
 export async function seedExercisesIfEmpty(): Promise<void> {
@@ -397,12 +489,14 @@ git commit -m "feat: add Dexie database schema and seed data for exercises"
 ### Task 4: Settings Store
 
 **Files:**
+
 - Create: `src/stores/settings-store.ts`
 - Test: `tests/stores/settings-store.test.ts`
 
 **Step 1: Write the test**
 
 Test that:
+
 - `loadSettings()` returns default settings when DB is empty
 - `loadSettings()` hydrates from DB when data exists
 - `updateSettings()` updates the signal and persists to DB
@@ -415,6 +509,7 @@ Run: `pnpm vitest run tests/stores/settings-store.test.ts`
 **Step 3: Implement the store**
 
 Pattern for all stores:
+
 ```typescript
 import { signal } from "@preact/signals";
 import { db } from "../db/database.ts";
@@ -436,7 +531,9 @@ export async function loadSettings(): Promise<void> {
   }
 }
 
-export async function updateSettings(updates: Partial<UserSettings>): Promise<void> {
+export async function updateSettings(
+  updates: Partial<UserSettings>,
+): Promise<void> {
   settings.value = { ...settings.value, ...updates };
   await db.settings.put({ id: "user-settings", ...settings.value });
 }
@@ -458,12 +555,14 @@ git commit -m "feat: add settings store with Dexie persistence"
 ### Task 5: Exercise Store
 
 **Files:**
+
 - Create: `src/stores/exercise-store.ts`
 - Test: `tests/stores/exercise-store.test.ts`
 
 **Step 1: Write the test**
 
 Test that:
+
 - `loadExercises()` hydrates from DB (run seed first to have data)
 - `addExercise(name, category?)` creates exercise with generated ID and persists
 - `updateExercise(id, updates)` modifies and persists
@@ -477,6 +576,7 @@ Test that:
 Use `crypto.randomUUID()` for ID generation (available in all modern browsers and Node 19+).
 
 The store exports:
+
 - `exercises` signal (array)
 - `loadExercises()`, `addExercise()`, `updateExercise()`, `deleteExercise()`
 - `getExercisesByCategory()` — returns a computed signal grouping exercises by category
@@ -495,12 +595,14 @@ git commit -m "feat: add exercise store with CRUD operations"
 ### Task 6: Routine Store
 
 **Files:**
+
 - Create: `src/stores/routine-store.ts`
 - Test: `tests/stores/routine-store.test.ts`
 
 **Step 1: Write the test**
 
 Test that:
+
 - `loadRoutines()` hydrates from DB
 - `addRoutine(name, exerciseIds)` creates and persists
 - `updateRoutine(id, updates)` modifies and persists
@@ -510,6 +612,7 @@ Test that:
 **Step 2-5: Same TDD cycle as above**
 
 **Commit:**
+
 ```bash
 git add src/stores/routine-store.ts tests/stores/routine-store.test.ts
 git commit -m "feat: add routine store with CRUD and reorder operations"
@@ -520,12 +623,14 @@ git commit -m "feat: add routine store with CRUD and reorder operations"
 ### Task 7: Workout Store (Active Workout State)
 
 **Files:**
+
 - Create: `src/stores/workout-store.ts`
 - Test: `tests/stores/workout-store.test.ts`
 
 **Step 1: Write the test**
 
 Test that:
+
 - `startWorkout(routineId?)` initializes a new workout with startTime and empty exerciseLogs
 - `addExerciseLog(log)` appends to exerciseLogs, updates totalTul
 - `finishWorkout()` sets endTime, computes totalTime, tulRatio, persists to DB
@@ -534,6 +639,7 @@ Test that:
 - `isWorkoutActive` computed signal returns true when a workout is in progress
 
 Active workout signals:
+
 - `activeWorkout` — the in-progress Workout or null
 - `currentExerciseIndex` — for routine-based workouts
 - `isWorkoutActive` — computed boolean
@@ -541,6 +647,7 @@ Active workout signals:
 **Step 2-5: Same TDD cycle**
 
 **Commit:**
+
 ```bash
 git add src/stores/workout-store.ts tests/stores/workout-store.test.ts
 git commit -m "feat: add workout store for active workout state management"
@@ -551,12 +658,14 @@ git commit -m "feat: add workout store for active workout state management"
 ### Task 8: History Store
 
 **Files:**
+
 - Create: `src/stores/history-store.ts`
 - Test: `tests/stores/history-store.test.ts`
 
 **Step 1: Write the test**
 
 Test that:
+
 - `loadHistory()` hydrates workouts from DB sorted by date descending
 - `getWorkout(id)` returns a specific workout
 - `deleteWorkout(id)` removes from signal and DB
@@ -565,6 +674,7 @@ Test that:
 **Step 2-5: Same TDD cycle**
 
 **Commit:**
+
 ```bash
 git add src/stores/history-store.ts tests/stores/history-store.test.ts
 git commit -m "feat: add history store for past workout retrieval"
@@ -577,6 +687,7 @@ git commit -m "feat: add history store for past workout retrieval"
 ### Task 9: Router and App Shell
 
 **Files:**
+
 - Modify: `src/app.tsx` — replace demo counter with router
 - Modify: `src/main.tsx` — wrap with LocationProvider
 - Create: `src/pages/workout-page.tsx` — placeholder
@@ -616,6 +727,7 @@ describe("App", () => {
 **Step 3: Implement the router**
 
 `src/app.tsx`:
+
 ```tsx
 import { Router, Route, ErrorBoundary } from "preact-iso";
 import { TabBar } from "./components/layout/tab-bar.tsx";
@@ -651,6 +763,7 @@ export function App() {
 ```
 
 `src/main.tsx`:
+
 ```tsx
 import { render } from "preact";
 import { LocationProvider } from "preact-iso";
@@ -681,12 +794,14 @@ git commit -m "feat: add preact-iso router with page placeholders and tab bar"
 ### Task 10: Tab Bar Component
 
 **Files:**
+
 - Create: `src/components/layout/tab-bar.tsx`
 - Test: `tests/components/layout/tab-bar.test.tsx`
 
 **Step 1: Write the test**
 
 Test that:
+
 - Renders 4 tab links: Workout (/), History (/history), Stats (/stats), Settings (/settings)
 - Active tab is visually highlighted (test by checking class or aria-current)
 
@@ -697,6 +812,7 @@ Design: Fixed bottom bar, 4 equal-width tabs, icon + label per tab. Use simple S
 Use `useLocation()` from preact-iso to determine the active tab.
 
 **Commit:**
+
 ```bash
 git add src/components/layout/tab-bar.tsx tests/components/layout/tab-bar.test.tsx
 git commit -m "feat: add bottom tab bar navigation component"
@@ -707,12 +823,14 @@ git commit -m "feat: add bottom tab bar navigation component"
 ### Task 11: Page Header Component
 
 **Files:**
+
 - Create: `src/components/layout/page-header.tsx`
 - Test: `tests/components/layout/page-header.test.tsx`
 
 **Step 1: Write the test**
 
 Test that:
+
 - Renders title text passed as prop
 - Optionally renders a back button when `onBack` prop is provided
 
@@ -721,6 +839,7 @@ Test that:
 Design: Sticky top bar with title. Optional left back arrow. Tailwind: `sticky top-0 bg-white border-b px-4 py-3`.
 
 **Commit:**
+
 ```bash
 git add src/components/layout/page-header.tsx tests/components/layout/page-header.test.tsx
 git commit -m "feat: add page header component with optional back button"
@@ -731,6 +850,7 @@ git commit -m "feat: add page header component with optional back button"
 ### Task 12: Initialize App Data on Load
 
 **Files:**
+
 - Modify: `src/app.tsx` — add data loading on mount
 - Test: `tests/app.test.tsx` — verify loading state
 
@@ -755,12 +875,18 @@ const isLoading = signal(true);
 
 async function initializeApp() {
   await seedExercisesIfEmpty();
-  await Promise.all([loadSettings(), loadExercises(), loadRoutines(), loadHistory()]);
+  await Promise.all([
+    loadSettings(),
+    loadExercises(),
+    loadRoutines(),
+    loadHistory(),
+  ]);
   isLoading.value = false;
 }
 ```
 
 **Commit:**
+
 ```bash
 git add src/app.tsx tests/app.test.tsx
 git commit -m "feat: initialize stores from database on app load"
@@ -773,12 +899,14 @@ git commit -m "feat: initialize stores from database on app load"
 ### Task 13: Settings Page
 
 **Files:**
+
 - Modify: `src/pages/settings-page.tsx`
 - Test: `tests/pages/settings-page.test.tsx`
 
 **Step 1: Write the test**
 
 Test that:
+
 - Renders weight unit toggle (lbs/kg)
 - Renders metronome toggle (on/off)
 - Renders countdown duration input
@@ -791,6 +919,7 @@ Test that:
 Design: Card-based layout. Toggle switches for boolean settings. Number input for countdown. Navigation links as list items with chevron icons.
 
 **Commit:**
+
 ```bash
 git add src/pages/settings-page.tsx tests/pages/settings-page.test.tsx
 git commit -m "feat: add settings page with user preferences and navigation"
@@ -801,12 +930,14 @@ git commit -m "feat: add settings page with user preferences and navigation"
 ### Task 14: Exercise Manager
 
 **Files:**
+
 - Create: `src/components/settings/exercise-manager.tsx`
 - Test: `tests/components/settings/exercise-manager.test.tsx`
 
 **Step 1: Write the test**
 
 Test that:
+
 - Lists all exercises grouped by category
 - "Add Exercise" button opens a form with name and category fields
 - Submitting the form calls `addExercise`
@@ -819,6 +950,7 @@ Test that:
 Design: Searchable list with category headers. Inline add/edit form. Swipe-to-delete or delete icon button.
 
 **Commit:**
+
 ```bash
 git add src/components/settings/exercise-manager.tsx tests/components/settings/exercise-manager.test.tsx
 git commit -m "feat: add exercise manager with CRUD operations"
@@ -829,12 +961,14 @@ git commit -m "feat: add exercise manager with CRUD operations"
 ### Task 15: Routine Manager
 
 **Files:**
+
 - Create: `src/components/settings/routine-manager.tsx`
 - Test: `tests/components/settings/routine-manager.test.tsx`
 
 **Step 1: Write the test**
 
 Test that:
+
 - Lists all routines
 - "Add Routine" opens form with name field and exercise picker (multi-select)
 - Submitting creates a routine
@@ -844,6 +978,7 @@ Test that:
 **Step 2-5: Same TDD cycle**
 
 **Commit:**
+
 ```bash
 git add src/components/settings/routine-manager.tsx tests/components/settings/routine-manager.test.tsx
 git commit -m "feat: add routine manager with CRUD and exercise ordering"
@@ -854,12 +989,14 @@ git commit -m "feat: add routine manager with CRUD and exercise ordering"
 ### Task 16: Import/Export
 
 **Files:**
+
 - Create: `src/utils/export.ts`
 - Test: `tests/utils/export.test.ts`
 
 **Step 1: Write the test**
 
 Test that:
+
 - `exportData()` returns an ExportData object with schemaVersion 1 and all tables
 - `importData(data)` validates schema version
 - `importData` merges by ID: newer `lastModified` wins, new records are added
@@ -878,6 +1015,7 @@ export function parseImportFile(file: File): Promise<ExportData> { ... } // Read
 ```
 
 **Commit:**
+
 ```bash
 git add src/utils/export.ts tests/utils/export.test.ts
 git commit -m "feat: add JSON import/export with last-write-wins merge strategy"
@@ -888,12 +1026,14 @@ git commit -m "feat: add JSON import/export with last-write-wins merge strategy"
 ### Task 17: Data Manager UI
 
 **Files:**
+
 - Create: `src/components/settings/data-manager.tsx`
 - Test: `tests/components/settings/data-manager.test.tsx`
 
 **Step 1: Write the test**
 
 Test that:
+
 - "Export Data" button triggers download
 - "Import Data" button opens file picker
 - After import, shows summary (X added, Y updated, Z skipped)
@@ -902,6 +1042,7 @@ Test that:
 **Step 2-5: Same TDD cycle**
 
 **Commit:**
+
 ```bash
 git add src/components/settings/data-manager.tsx tests/components/settings/data-manager.test.tsx
 git commit -m "feat: add data manager UI for import/export"
@@ -914,12 +1055,14 @@ git commit -m "feat: add data manager UI for import/export"
 ### Task 18: Audio Utility (Metronome)
 
 **Files:**
+
 - Create: `src/utils/audio.ts`
 - Test: `tests/utils/audio.test.ts`
 
 **Step 1: Write the test**
 
 Test that:
+
 - `createMetronome()` returns an object with `start()`, `stop()`, `isPlaying` methods
 - Starting the metronome sets `isPlaying` to true
 - Stopping sets `isPlaying` to false
@@ -928,6 +1071,7 @@ Test that:
 **Step 2-5: Same TDD cycle**
 
 Implementation notes:
+
 - Create AudioContext lazily on first user interaction
 - Generate a short beep: oscillator at 800Hz for 100ms with gain envelope
 - `start()` sets up a 1-second interval that calls the beep function
@@ -961,6 +1105,7 @@ export function createMetronome() { ... }
 ```
 
 **Commit:**
+
 ```bash
 git add src/utils/audio.ts tests/utils/audio.test.ts
 git commit -m "feat: add Web Audio metronome utility"
@@ -971,12 +1116,14 @@ git commit -m "feat: add Web Audio metronome utility"
 ### Task 19: Wake Lock Utility
 
 **Files:**
+
 - Create: `src/utils/wake-lock.ts`
 - Test: `tests/utils/wake-lock.test.ts`
 
 **Step 1: Write the test**
 
 Test that:
+
 - `requestWakeLock()` calls `navigator.wakeLock.request("screen")` when available
 - `releaseWakeLock()` releases the lock
 - Gracefully handles browsers without Wake Lock API
@@ -984,6 +1131,7 @@ Test that:
 **Step 2-5: Same TDD cycle**
 
 **Commit:**
+
 ```bash
 git add src/utils/wake-lock.ts tests/utils/wake-lock.test.ts
 git commit -m "feat: add screen wake lock utility for active workouts"
@@ -994,12 +1142,14 @@ git commit -m "feat: add screen wake lock utility for active workouts"
 ### Task 20: Timer Hook
 
 **Files:**
+
 - Create: `src/hooks/use-timer.ts`
 - Test: `tests/hooks/use-timer.test.ts`
 
 **Step 1: Write the test**
 
 Test that:
+
 - Initial state: phase is "idle", elapsedMs is 0
 - `startCountdown()` sets phase to "countdown", counts down from `countdownDuration`
 - After countdown reaches 0, phase transitions to "running"
@@ -1012,6 +1162,7 @@ Note: Use `vi.useFakeTimers()` for timer testing.
 **Step 2-5: Same TDD cycle**
 
 The hook uses signals internally:
+
 ```typescript
 import { signal, computed } from "@preact/signals";
 import type { TimerPhase } from "../types/index.ts";
@@ -1032,11 +1183,21 @@ export function useTimer(countdownDuration: number) {
   // startCountdown, stop, reset functions using requestAnimationFrame
   // ...
 
-  return { phase, elapsedMs, elapsedSeconds, countdownRemaining, displayTime, startCountdown, stop, reset };
+  return {
+    phase,
+    elapsedMs,
+    elapsedSeconds,
+    countdownRemaining,
+    displayTime,
+    startCountdown,
+    stop,
+    reset,
+  };
 }
 ```
 
 **Commit:**
+
 ```bash
 git add src/hooks/use-timer.ts tests/hooks/use-timer.test.ts
 git commit -m "feat: add timer hook with countdown and elapsed time tracking"
@@ -1047,12 +1208,14 @@ git commit -m "feat: add timer hook with countdown and elapsed time tracking"
 ### Task 21: Start Workout Page
 
 **Files:**
+
 - Modify: `src/pages/workout-page.tsx`
 - Test: `tests/pages/workout-page.test.tsx`
 
 **Step 1: Write the test**
 
 Test that when no workout is active:
+
 - Shows "Start Workout" heading
 - Shows list of routines to pick from
 - Shows "Freeform Workout" option
@@ -1060,6 +1223,7 @@ Test that when no workout is active:
 - Clicking freeform calls `startWorkout()` with no routine
 
 When a workout IS active (mock `isWorkoutActive` to true):
+
 - Redirects to the active workout view (or renders it inline)
 
 **Step 2-5: Same TDD cycle**
@@ -1067,6 +1231,7 @@ When a workout IS active (mock `isWorkoutActive` to true):
 Design: Large prominent buttons. Routine cards show name + exercise count. Freeform card at top or bottom.
 
 **Commit:**
+
 ```bash
 git add src/pages/workout-page.tsx tests/pages/workout-page.test.tsx
 git commit -m "feat: add start workout page with routine selection"
@@ -1077,6 +1242,7 @@ git commit -m "feat: add start workout page with routine selection"
 ### Task 22: Exercise Timer Component
 
 **Files:**
+
 - Create: `src/components/timer/countdown.tsx`
 - Create: `src/components/timer/exercise-timer.tsx`
 - Test: `tests/components/timer/exercise-timer.test.tsx`
@@ -1084,6 +1250,7 @@ git commit -m "feat: add start workout page with routine selection"
 **Step 1: Write the test**
 
 Test that:
+
 - Shows "Start Exercise" button in idle state
 - Clicking start shows countdown (3... 2... 1...)
 - After countdown, shows running timer with elapsed time
@@ -1098,6 +1265,7 @@ Timer component: Large centered time display (MM:SS), prominent stop button.
 Integrates with `useTimer` hook and `createMetronome`.
 
 **Commit:**
+
 ```bash
 git add src/components/timer/ tests/components/timer/
 git commit -m "feat: add exercise timer with countdown and metronome integration"
@@ -1108,12 +1276,14 @@ git commit -m "feat: add exercise timer with countdown and metronome integration
 ### Task 23: Exercise Card (Logging)
 
 **Files:**
+
 - Create: `src/components/workout/exercise-card.tsx`
 - Test: `tests/components/workout/exercise-card.test.tsx`
 
 **Step 1: Write the test**
 
 Test that:
+
 - Shows exercise name
 - After timer stops, shows form with: weight input, TUL (read-only from timer), optional reps, optional notes
 - Weight input pre-fills with last used weight for this exercise (from history)
@@ -1126,6 +1296,7 @@ Test that:
 Design: Card layout. Large weight input with +/- steppers. TUL shown prominently. Three toggle buttons for weight direction (up arrow, down arrow, equals). Notes as a collapsible textarea.
 
 **Commit:**
+
 ```bash
 git add src/components/workout/exercise-card.tsx tests/components/workout/exercise-card.test.tsx
 git commit -m "feat: add exercise card with weight, TUL, and direction logging"
@@ -1136,12 +1307,14 @@ git commit -m "feat: add exercise card with weight, TUL, and direction logging"
 ### Task 24: Exercise Picker (Freeform)
 
 **Files:**
+
 - Create: `src/components/workout/exercise-picker.tsx`
 - Test: `tests/components/workout/exercise-picker.test.tsx`
 
 **Step 1: Write the test**
 
 Test that:
+
 - Shows searchable list of exercises grouped by category
 - Selecting an exercise returns it (onSelect callback)
 - Search filters exercises by name
@@ -1150,6 +1323,7 @@ Test that:
 **Step 2-5: Same TDD cycle**
 
 **Commit:**
+
 ```bash
 git add src/components/workout/exercise-picker.tsx tests/components/workout/exercise-picker.test.tsx
 git commit -m "feat: add exercise picker for freeform workouts"
@@ -1160,12 +1334,14 @@ git commit -m "feat: add exercise picker for freeform workouts"
 ### Task 25: Active Workout Flow
 
 **Files:**
+
 - Modify: `src/pages/workout-page.tsx` — integrate all workout components
 - Test: `tests/pages/active-workout.test.tsx`
 
 **Step 1: Write the test**
 
 Test the full workout flow:
+
 1. Start a routine workout → first exercise shown
 2. Start timer → countdown → running → stop → log form shown
 3. Fill in weight, select direction → save → next exercise shown
@@ -1180,6 +1356,7 @@ This task ties together: workout store, timer hook, exercise timer, exercise car
 Integrate wake lock: acquire on workout start, release on finish/cancel.
 
 **Commit:**
+
 ```bash
 git add src/pages/workout-page.tsx tests/pages/active-workout.test.tsx
 git commit -m "feat: integrate active workout flow with timer, logging, and navigation"
@@ -1190,12 +1367,14 @@ git commit -m "feat: integrate active workout flow with timer, logging, and navi
 ### Task 26: Weight Direction Selector
 
 **Files:**
+
 - Create: `src/components/workout/weight-direction.tsx`
 - Test: `tests/components/workout/weight-direction.test.tsx`
 
 **Step 1: Write the test**
 
 Test that:
+
 - Renders three buttons: increase (up arrow), maintain (equals), decrease (down arrow)
 - Clicking a button calls `onChange` with the direction
 - Selected button is visually highlighted
@@ -1206,6 +1385,7 @@ Test that:
 Design: Three equal-width buttons in a row. Colors: green for increase, gray for maintain, red for decrease. Icon + text label.
 
 **Commit:**
+
 ```bash
 git add src/components/workout/weight-direction.tsx tests/components/workout/weight-direction.test.tsx
 git commit -m "feat: add weight direction selector component"
@@ -1216,12 +1396,14 @@ git commit -m "feat: add weight direction selector component"
 ### Task 27: Workout Summary
 
 **Files:**
+
 - Create: `src/components/workout/workout-summary.tsx`
 - Test: `tests/components/workout/workout-summary.test.tsx`
 
 **Step 1: Write the test**
 
 Test that:
+
 - Shows total workout time (formatted MM:SS)
 - Shows total TUL (formatted MM:SS)
 - Shows TUL ratio (percentage)
@@ -1234,6 +1416,7 @@ Test that:
 Design: Stats at top in bold cards. Exercise list below as a table/card list. Celebrate completion with a subtle visual.
 
 **Commit:**
+
 ```bash
 git add src/components/workout/workout-summary.tsx tests/components/workout/workout-summary.test.tsx
 git commit -m "feat: add workout summary with stats and exercise breakdown"
@@ -1246,12 +1429,14 @@ git commit -m "feat: add workout summary with stats and exercise breakdown"
 ### Task 28: Workout History List
 
 **Files:**
+
 - Modify: `src/pages/history-page.tsx`
 - Test: `tests/pages/history-page.test.tsx`
 
 **Step 1: Write the test**
 
 Test that:
+
 - Shows list of past workouts sorted by date (most recent first)
 - Each item shows: date, routine name (or "Freeform"), exercise count, total TUL
 - Empty state shows message "No workouts yet"
@@ -1262,6 +1447,7 @@ Test that:
 Design: Cards grouped by month. Each card: date on left, stats on right. Subtle dividers between months.
 
 **Commit:**
+
 ```bash
 git add src/pages/history-page.tsx tests/pages/history-page.test.tsx
 git commit -m "feat: add workout history list with grouped display"
@@ -1272,6 +1458,7 @@ git commit -m "feat: add workout history list with grouped display"
 ### Task 29: Workout Detail View
 
 **Files:**
+
 - Create: `src/components/history/workout-detail.tsx`
 - Modify: `src/pages/history-page.tsx` — route to detail when ID present
 - Test: `tests/components/history/workout-detail.test.tsx`
@@ -1279,6 +1466,7 @@ git commit -m "feat: add workout history list with grouped display"
 **Step 1: Write the test**
 
 Test that:
+
 - Shows date, total time, total TUL, TUL ratio
 - Lists all exercises with: name, weight, TUL, reps (if recorded), notes, weight direction
 - "Delete Workout" button with confirmation
@@ -1286,6 +1474,7 @@ Test that:
 **Step 2-5: Same TDD cycle**
 
 **Commit:**
+
 ```bash
 git add src/components/history/workout-detail.tsx src/pages/history-page.tsx tests/components/history/workout-detail.test.tsx
 git commit -m "feat: add workout detail view with exercise breakdown"
@@ -1298,6 +1487,7 @@ git commit -m "feat: add workout detail view with exercise breakdown"
 ### Task 30: Summary Cards
 
 **Files:**
+
 - Create: `src/components/stats/summary-cards.tsx`
 - Modify: `src/pages/stats-page.tsx`
 - Test: `tests/components/stats/summary-cards.test.tsx`
@@ -1305,6 +1495,7 @@ git commit -m "feat: add workout detail view with exercise breakdown"
 **Step 1: Write the test**
 
 Test that:
+
 - Shows total workout count
 - Shows average TUL per workout
 - Shows average TUL ratio
@@ -1317,6 +1508,7 @@ Test that:
 Design: 2x2 grid of stat cards. Each card: label on top, large number below, optional trend indicator.
 
 **Commit:**
+
 ```bash
 git add src/components/stats/summary-cards.tsx src/pages/stats-page.tsx tests/components/stats/summary-cards.test.tsx
 git commit -m "feat: add summary stats cards with computed metrics"
@@ -1327,12 +1519,14 @@ git commit -m "feat: add summary stats cards with computed metrics"
 ### Task 31: TUL Chart
 
 **Files:**
+
 - Create: `src/components/stats/tul-chart.tsx`
 - Test: `tests/components/stats/tul-chart.test.tsx`
 
 **Step 1: Write the test**
 
 Test that:
+
 - Renders a canvas element for Chart.js
 - Accepts exercise filter and date range filter
 - Filters workout data correctly
@@ -1354,6 +1548,7 @@ export function prepareTulChartData(
 ```
 
 **Commit:**
+
 ```bash
 git add src/components/stats/tul-chart.tsx tests/components/stats/tul-chart.test.tsx
 git commit -m "feat: add TUL over time chart with exercise and date filters"
@@ -1364,12 +1559,14 @@ git commit -m "feat: add TUL over time chart with exercise and date filters"
 ### Task 32: Weight Progression Chart
 
 **Files:**
+
 - Create: `src/components/stats/weight-chart.tsx`
 - Test: `tests/components/stats/weight-chart.test.tsx`
 
 Same pattern as TUL chart but plots weight over time per exercise.
 
 **Commit:**
+
 ```bash
 git add src/components/stats/weight-chart.tsx tests/components/stats/weight-chart.test.tsx
 git commit -m "feat: add weight progression chart per exercise"
@@ -1380,12 +1577,14 @@ git commit -m "feat: add weight progression chart per exercise"
 ### Task 33: Stats Dashboard Assembly
 
 **Files:**
+
 - Modify: `src/pages/stats-page.tsx`
 - Test: `tests/pages/stats-page.test.tsx`
 
 **Step 1: Write the test**
 
 Test that:
+
 - Renders summary cards at top
 - Renders exercise filter dropdown
 - Renders date range filter (30d, 90d, 1y, all)
@@ -1397,6 +1596,7 @@ Test that:
 Design: Summary cards at top. Filter bar below. Charts stacked vertically, scrollable. Each chart in a card with a title.
 
 **Commit:**
+
 ```bash
 git add src/pages/stats-page.tsx tests/pages/stats-page.test.tsx
 git commit -m "feat: assemble stats dashboard with filters and charts"
@@ -1409,6 +1609,7 @@ git commit -m "feat: assemble stats dashboard with filters and charts"
 ### Task 34: PWA Setup
 
 **Files:**
+
 - Modify: `vite.config.ts` — add VitePWA plugin
 - Modify: `index.html` — update title, add meta tags for PWA
 - Create: `public/icons/` — placeholder icons (can use a simple SVG for now)
@@ -1438,7 +1639,12 @@ export default defineConfig({
         start_url: "/",
         icons: [
           { src: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
-          { src: "/icons/icon-512.png", sizes: "512x512", type: "image/png", purpose: "any maskable" },
+          {
+            src: "/icons/icon-512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "any maskable",
+          },
         ],
       },
       workbox: {
@@ -1480,6 +1686,7 @@ git commit -m "feat: add PWA configuration with service worker and manifest"
 ### Task 35: Run Full Test Suite and Fix Issues
 
 **Files:**
+
 - Various fixes as needed
 
 **Step 1: Run all tests**

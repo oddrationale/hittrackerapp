@@ -24,9 +24,7 @@ export function prepareWeightChartData(
   const labels: string[] = [];
   const data: number[] = [];
   for (const workout of filtered) {
-    const log = workout.exerciseLogs.find(
-      (l) => l.exerciseId === exerciseId,
-    );
+    const log = workout.exerciseLogs.find((l) => l.exerciseId === exerciseId);
     if (log) {
       labels.push(workout.date);
       data.push(log.weight);
@@ -95,7 +93,14 @@ export function WeightChart({ exerciseId, dateRange }: WeightChartProps) {
         chartRef.current = null;
       }
     };
-  }, [workoutHistory.value, exerciseId, dateRange?.start, dateRange?.end]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    workoutHistory.value,
+    exerciseId,
+    dateRange,
+    dateRange?.start,
+    dateRange?.end,
+  ]);
 
   const { labels } = prepareWeightChartData(
     workoutHistory.value,
@@ -113,9 +118,7 @@ export function WeightChart({ exerciseId, dateRange }: WeightChartProps) {
 
   return (
     <div class="rounded-lg bg-white p-4 shadow-sm">
-      <h3 class="mb-2 text-sm font-medium text-gray-700">
-        Weight Progression
-      </h3>
+      <h3 class="mb-2 text-sm font-medium text-gray-700">Weight Progression</h3>
       <div class="h-48">
         <canvas ref={canvasRef} />
       </div>

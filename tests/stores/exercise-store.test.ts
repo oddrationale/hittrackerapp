@@ -40,7 +40,9 @@ describe("Exercise Store", () => {
   describe("addExercise()", () => {
     it("creates exercise with generated UUID and persists", async () => {
       const mockId = "mock-uuid-1234";
-      vi.spyOn(crypto, "randomUUID").mockReturnValueOnce(mockId as `${string}-${string}-${string}-${string}-${string}`);
+      vi.spyOn(crypto, "randomUUID").mockReturnValueOnce(
+        mockId as `${string}-${string}-${string}-${string}-${string}`,
+      );
 
       const result = await addExercise("Squat", "Legs");
 
@@ -86,7 +88,12 @@ describe("Exercise Store", () => {
         lastModified: 1000,
       });
       exercises.value = [
-        { id: "ex-1", name: "Bench Press", category: "Chest", lastModified: 1000 },
+        {
+          id: "ex-1",
+          name: "Bench Press",
+          category: "Chest",
+          lastModified: 1000,
+        },
       ];
 
       await updateExercise("ex-1", { name: "Incline Bench Press" });
@@ -126,7 +133,9 @@ describe("Exercise Store", () => {
         name: "Bench Press",
         lastModified: 1000,
       });
-      exercises.value = [{ id: "ex-1", name: "Bench Press", lastModified: 1000 }];
+      exercises.value = [
+        { id: "ex-1", name: "Bench Press", lastModified: 1000 },
+      ];
 
       await deleteExercise("ex-1");
 
@@ -162,9 +171,19 @@ describe("Exercise Store", () => {
   describe("exercisesByCategory", () => {
     it("groups exercises by category", () => {
       exercises.value = [
-        { id: "ex-1", name: "Bench Press", category: "Chest", lastModified: 1000 },
+        {
+          id: "ex-1",
+          name: "Bench Press",
+          category: "Chest",
+          lastModified: 1000,
+        },
         { id: "ex-2", name: "Squat", category: "Legs", lastModified: 1000 },
-        { id: "ex-3", name: "Incline Press", category: "Chest", lastModified: 1000 },
+        {
+          id: "ex-3",
+          name: "Incline Press",
+          category: "Chest",
+          lastModified: 1000,
+        },
       ];
 
       const grouped = exercisesByCategory.value;

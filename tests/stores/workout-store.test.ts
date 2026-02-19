@@ -120,7 +120,9 @@ describe("Workout Store", () => {
       expect(completed!.endTime).toBeDefined();
       expect(completed!.endTime).toBeTypeOf("number");
       expect(completed!.totalTime).toBeGreaterThan(0);
-      expect(completed!.tulRatio).toBe(completed!.totalTul / completed!.totalTime);
+      expect(completed!.tulRatio).toBe(
+        completed!.totalTul / completed!.totalTime,
+      );
 
       // Active workout should be cleared
       expect(activeWorkout.value).toBeNull();

@@ -20,16 +20,14 @@ function createWorkout(overrides: Partial<Workout> = {}): Workout {
 
 describe("computeStats", () => {
   it("returns null when no workouts exist", async () => {
-    const { computeStats } = await import(
-      "../../../src/components/stats/summary-cards.tsx"
-    );
+    const { computeStats } =
+      await import("../../../src/components/stats/summary-cards.tsx");
     expect(computeStats([])).toBeNull();
   });
 
   it("computes total workout count", async () => {
-    const { computeStats } = await import(
-      "../../../src/components/stats/summary-cards.tsx"
-    );
+    const { computeStats } =
+      await import("../../../src/components/stats/summary-cards.tsx");
     const workouts = [
       createWorkout({ totalTul: 200, tulRatio: 0.2 }),
       createWorkout({ totalTul: 400, tulRatio: 0.4 }),
@@ -41,9 +39,8 @@ describe("computeStats", () => {
   });
 
   it("computes average TUL per workout (rounded)", async () => {
-    const { computeStats } = await import(
-      "../../../src/components/stats/summary-cards.tsx"
-    );
+    const { computeStats } =
+      await import("../../../src/components/stats/summary-cards.tsx");
     // (200 + 400 + 300) / 3 = 300
     const workouts = [
       createWorkout({ totalTul: 200, tulRatio: 0.2 }),
@@ -55,9 +52,8 @@ describe("computeStats", () => {
   });
 
   it("rounds average TUL when not evenly divisible", async () => {
-    const { computeStats } = await import(
-      "../../../src/components/stats/summary-cards.tsx"
-    );
+    const { computeStats } =
+      await import("../../../src/components/stats/summary-cards.tsx");
     // (100 + 200) / 2 = 150 (even)
     // (100 + 201) / 2 = 150.5 -> rounds to 151
     const workouts = [
@@ -69,9 +65,8 @@ describe("computeStats", () => {
   });
 
   it("computes average TUL ratio", async () => {
-    const { computeStats } = await import(
-      "../../../src/components/stats/summary-cards.tsx"
-    );
+    const { computeStats } =
+      await import("../../../src/components/stats/summary-cards.tsx");
     // (0.2 + 0.4 + 0.3) / 3 = 0.3
     const workouts = [
       createWorkout({ totalTul: 200, tulRatio: 0.2 }),
@@ -83,9 +78,8 @@ describe("computeStats", () => {
   });
 
   it("computes streak of consecutive weeks with workouts", async () => {
-    const { computeStats } = await import(
-      "../../../src/components/stats/summary-cards.tsx"
-    );
+    const { computeStats } =
+      await import("../../../src/components/stats/summary-cards.tsx");
 
     // Use fake timers so "now" is a fixed date
     vi.useFakeTimers();
@@ -109,9 +103,8 @@ describe("computeStats", () => {
   });
 
   it("streak breaks when a week is missed", async () => {
-    const { computeStats } = await import(
-      "../../../src/components/stats/summary-cards.tsx"
-    );
+    const { computeStats } =
+      await import("../../../src/components/stats/summary-cards.tsx");
 
     vi.useFakeTimers();
     vi.setSystemTime(new Date("2026-02-18T12:00:00"));
@@ -130,9 +123,8 @@ describe("computeStats", () => {
   });
 
   it("computes stats correctly from mock workout data", async () => {
-    const { computeStats } = await import(
-      "../../../src/components/stats/summary-cards.tsx"
-    );
+    const { computeStats } =
+      await import("../../../src/components/stats/summary-cards.tsx");
 
     vi.useFakeTimers();
     vi.setSystemTime(new Date("2026-02-18T12:00:00"));
@@ -176,9 +168,8 @@ describe("computeStats", () => {
 
 describe("SummaryCards component", () => {
   beforeEach(async () => {
-    const { workoutHistory } = await import(
-      "../../../src/stores/history-store.ts"
-    );
+    const { workoutHistory } =
+      await import("../../../src/stores/history-store.ts");
     workoutHistory.value = [];
   });
 
@@ -187,9 +178,8 @@ describe("SummaryCards component", () => {
   });
 
   it("shows 'No workout data yet' when no workouts exist", async () => {
-    const { SummaryCards } = await import(
-      "../../../src/components/stats/summary-cards.tsx"
-    );
+    const { SummaryCards } =
+      await import("../../../src/components/stats/summary-cards.tsx");
     render(<SummaryCards />);
     expect(screen.getByText("No workout data yet")).toBeInTheDocument();
   });
@@ -198,17 +188,15 @@ describe("SummaryCards component", () => {
     vi.useFakeTimers();
     vi.setSystemTime(new Date("2026-02-18T12:00:00"));
 
-    const { workoutHistory } = await import(
-      "../../../src/stores/history-store.ts"
-    );
+    const { workoutHistory } =
+      await import("../../../src/stores/history-store.ts");
     workoutHistory.value = [
       createWorkout({ date: "2026-02-18", totalTul: 300, tulRatio: 0.25 }),
       createWorkout({ date: "2026-02-11", totalTul: 200, tulRatio: 0.2 }),
     ];
 
-    const { SummaryCards } = await import(
-      "../../../src/components/stats/summary-cards.tsx"
-    );
+    const { SummaryCards } =
+      await import("../../../src/components/stats/summary-cards.tsx");
     render(<SummaryCards />);
     expect(screen.getByText("Total Workouts")).toBeInTheDocument();
     expect(screen.getByText("2")).toBeInTheDocument();
@@ -218,18 +206,16 @@ describe("SummaryCards component", () => {
     vi.useFakeTimers();
     vi.setSystemTime(new Date("2026-02-18T12:00:00"));
 
-    const { workoutHistory } = await import(
-      "../../../src/stores/history-store.ts"
-    );
+    const { workoutHistory } =
+      await import("../../../src/stores/history-store.ts");
     // avg = (300 + 200) / 2 = 250 seconds = 4:10
     workoutHistory.value = [
       createWorkout({ date: "2026-02-18", totalTul: 300, tulRatio: 0.25 }),
       createWorkout({ date: "2026-02-11", totalTul: 200, tulRatio: 0.2 }),
     ];
 
-    const { SummaryCards } = await import(
-      "../../../src/components/stats/summary-cards.tsx"
-    );
+    const { SummaryCards } =
+      await import("../../../src/components/stats/summary-cards.tsx");
     render(<SummaryCards />);
     expect(screen.getByText("Avg TUL / Workout")).toBeInTheDocument();
     expect(screen.getByText("4:10")).toBeInTheDocument();
@@ -239,18 +225,16 @@ describe("SummaryCards component", () => {
     vi.useFakeTimers();
     vi.setSystemTime(new Date("2026-02-18T12:00:00"));
 
-    const { workoutHistory } = await import(
-      "../../../src/stores/history-store.ts"
-    );
+    const { workoutHistory } =
+      await import("../../../src/stores/history-store.ts");
     // avg ratio = (0.25 + 0.35) / 2 = 0.3 => 30%
     workoutHistory.value = [
       createWorkout({ date: "2026-02-18", totalTul: 300, tulRatio: 0.25 }),
       createWorkout({ date: "2026-02-11", totalTul: 200, tulRatio: 0.35 }),
     ];
 
-    const { SummaryCards } = await import(
-      "../../../src/components/stats/summary-cards.tsx"
-    );
+    const { SummaryCards } =
+      await import("../../../src/components/stats/summary-cards.tsx");
     render(<SummaryCards />);
     expect(screen.getByText("Avg TUL Ratio")).toBeInTheDocument();
     expect(screen.getByText("30%")).toBeInTheDocument();
@@ -260,17 +244,15 @@ describe("SummaryCards component", () => {
     vi.useFakeTimers();
     vi.setSystemTime(new Date("2026-02-18T12:00:00"));
 
-    const { workoutHistory } = await import(
-      "../../../src/stores/history-store.ts"
-    );
+    const { workoutHistory } =
+      await import("../../../src/stores/history-store.ts");
     workoutHistory.value = [
       createWorkout({ date: "2026-02-18", totalTul: 300, tulRatio: 0.25 }),
       createWorkout({ date: "2026-02-11", totalTul: 200, tulRatio: 0.2 }),
     ];
 
-    const { SummaryCards } = await import(
-      "../../../src/components/stats/summary-cards.tsx"
-    );
+    const { SummaryCards } =
+      await import("../../../src/components/stats/summary-cards.tsx");
     render(<SummaryCards />);
     expect(screen.getByText("Streak")).toBeInTheDocument();
     expect(screen.getByText("2 weeks")).toBeInTheDocument();

@@ -11,17 +11,17 @@ Follows the Obsidian model: free app, local data, full user ownership via JSON e
 
 ## Technology Decisions
 
-| Decision | Choice | Rationale |
-|----------|--------|-----------|
-| UI Framework | Preact + TypeScript | Already in place |
+| Decision         | Choice                           | Rationale                                                       |
+| ---------------- | -------------------------------- | --------------------------------------------------------------- |
+| UI Framework     | Preact + TypeScript              | Already in place                                                |
 | State Management | @preact/signals (signal-centric) | Signals are runtime source of truth; Dexie is persistence layer |
-| Local Storage | IndexedDB via Dexie.js | Structured, queryable, good for offline-first, easy JSON export |
-| Routing | preact-iso | Lightweight, Preact-native router |
-| Charts | Chart.js | Popular, responsive, good mobile support |
-| Metronome Audio | Web Audio API | Programmatic tone generation, no asset dependencies |
-| UI Components | Custom Tailwind | Full control, no component library dependency |
-| PWA | vite-plugin-pwa | Service worker generation, cache-first strategy |
-| Styling | Tailwind CSS v4 | Already in place |
+| Local Storage    | IndexedDB via Dexie.js           | Structured, queryable, good for offline-first, easy JSON export |
+| Routing          | preact-iso                       | Lightweight, Preact-native router                               |
+| Charts           | Chart.js                         | Popular, responsive, good mobile support                        |
+| Metronome Audio  | Web Audio API                    | Programmatic tone generation, no asset dependencies             |
+| UI Components    | Custom Tailwind                  | Full control, no component library dependency                   |
+| PWA              | vite-plugin-pwa                  | Service worker generation, cache-first strategy                 |
+| Styling          | Tailwind CSS v4                  | Already in place                                                |
 
 ## Data Model
 
@@ -45,27 +45,27 @@ interface ExerciseLog {
   id: string;
   exerciseId: string;
   weight: number;
-  tul: number;              // seconds
+  tul: number; // seconds
   reps?: number;
   notes?: string;
-  weightDirection: 'increase' | 'decrease' | 'maintain';
+  weightDirection: "increase" | "decrease" | "maintain";
 }
 
 interface Workout {
   id: string;
-  date: string;             // ISO date
-  startTime: number;        // Unix timestamp ms
+  date: string; // ISO date
+  startTime: number; // Unix timestamp ms
   endTime?: number;
-  routineId?: string;       // null for freeform
+  routineId?: string; // null for freeform
   exerciseLogs: ExerciseLog[];
-  totalTul: number;         // sum of exercise TULs
-  totalTime: number;        // endTime - startTime
-  tulRatio: number;         // totalTul / totalTime
+  totalTul: number; // sum of exercise TULs
+  totalTime: number; // endTime - startTime
+  tulRatio: number; // totalTul / totalTime
   lastModified: number;
 }
 
 interface UserSettings {
-  weightUnit: 'lbs' | 'kg';
+  weightUnit: "lbs" | "kg";
   metronomeEnabled: boolean;
   countdownDuration: number; // default 3 seconds
 }
@@ -78,6 +78,7 @@ interface UserSettings {
 All app state lives in `@preact/signals` stores organized by domain. Dexie handles persistence as a write-behind layer.
 
 **Stores:**
+
 - `workoutStore` — Active workout state: current exercise index, timer state, elapsed time, exercise logs in progress
 - `exerciseStore` — Exercise library
 - `routineStore` — Routines
@@ -85,6 +86,7 @@ All app state lives in `@preact/signals` stores organized by domain. Dexie handl
 - `settingsStore` — User preferences
 
 **Persistence pattern:**
+
 1. On app load: hydrate all stores from Dexie
 2. On state change: write-behind to Dexie (debounced where appropriate, immediate for workout completion)
 3. Active workout state persisted on every exercise completion (crash recovery)
@@ -109,17 +111,17 @@ Bottom tab bar with 4 tabs: Workout, History, Stats, Settings.
 
 ### Routes
 
-| View | Path | Description |
-|------|------|-------------|
-| Start Workout | `/` | Choose routine or freeform, start button |
-| Active Workout | `/workout/active` | Exercise timer, log entries, in-progress state |
-| Workout Summary | `/workout/summary` | Post-workout stats |
-| History List | `/history` | Past workouts, grouped by date |
-| Workout Detail | `/history/:id` | Single past workout details |
-| Stats Dashboard | `/stats` | Charts and summary stats |
-| Settings | `/settings` | User prefs, exercise/routine management, import/export |
-| Manage Exercises | `/settings/exercises` | CRUD for exercise library |
-| Manage Routines | `/settings/routines` | CRUD for routines |
+| View             | Path                  | Description                                            |
+| ---------------- | --------------------- | ------------------------------------------------------ |
+| Start Workout    | `/`                   | Choose routine or freeform, start button               |
+| Active Workout   | `/workout/active`     | Exercise timer, log entries, in-progress state         |
+| Workout Summary  | `/workout/summary`    | Post-workout stats                                     |
+| History List     | `/history`            | Past workouts, grouped by date                         |
+| Workout Detail   | `/history/:id`        | Single past workout details                            |
+| Stats Dashboard  | `/stats`              | Charts and summary stats                               |
+| Settings         | `/settings`           | User prefs, exercise/routine management, import/export |
+| Manage Exercises | `/settings/exercises` | CRUD for exercise library                              |
+| Manage Routines  | `/settings/routines`  | CRUD for routines                                      |
 
 ### Active Workout Flow
 
@@ -146,13 +148,13 @@ Bottom tab bar with 4 tabs: Workout, History, Stats, Settings.
 
 ### Charts (Chart.js)
 
-| Chart | Type | Data |
-|-------|------|------|
-| TUL over time per exercise | Line | X: date, Y: TUL seconds |
-| Weight progression per exercise | Line | X: date, Y: weight |
-| Workout frequency | Bar | X: week/month, Y: count |
-| Total TUL per workout | Line | X: date, Y: total TUL |
-| TUL ratio trend | Line | X: date, Y: ratio |
+| Chart                           | Type | Data                    |
+| ------------------------------- | ---- | ----------------------- |
+| TUL over time per exercise      | Line | X: date, Y: TUL seconds |
+| Weight progression per exercise | Line | X: date, Y: weight      |
+| Workout frequency               | Bar  | X: week/month, Y: count |
+| Total TUL per workout           | Line | X: date, Y: total TUL   |
+| TUL ratio trend                 | Line | X: date, Y: ratio       |
 
 ### Filters
 

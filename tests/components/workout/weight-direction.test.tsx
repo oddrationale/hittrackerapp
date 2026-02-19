@@ -47,16 +47,14 @@ describe("WeightDirectionSelector", () => {
     const decreaseButton = screen.getByText("Decrease").closest("button")!;
     expect(decreaseButton.className).toContain("bg-gray-100");
 
-    rerender(
-      <WeightDirectionSelector value="decrease" onChange={() => {}} />,
-    );
+    rerender(<WeightDirectionSelector value="decrease" onChange={() => {}} />);
 
-    expect(
-      screen.getByText("Increase").closest("button")!.className,
-    ).toContain("bg-gray-100");
-    expect(
-      screen.getByText("Decrease").closest("button")!.className,
-    ).toContain("bg-red-600");
+    expect(screen.getByText("Increase").closest("button")!.className).toContain(
+      "bg-gray-100",
+    );
+    expect(screen.getByText("Decrease").closest("button")!.className).toContain(
+      "bg-red-600",
+    );
   });
 
   it("default selection is 'maintain' when no value is provided", () => {

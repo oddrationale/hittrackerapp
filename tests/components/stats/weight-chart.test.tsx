@@ -30,28 +30,21 @@ function createWorkout(overrides: Partial<Workout> = {}): Workout {
 
 describe("prepareWeightChartData", () => {
   it("returns labels and data for weight over time for a specific exercise", async () => {
-    const { prepareWeightChartData } = await import(
-      "../../../src/components/stats/weight-chart.tsx"
-    );
+    const { prepareWeightChartData } =
+      await import("../../../src/components/stats/weight-chart.tsx");
 
     const workouts: Workout[] = [
       createWorkout({
         date: "2026-02-10",
-        exerciseLogs: [
-          createExerciseLog({ exerciseId: "ex-1", weight: 100 }),
-        ],
+        exerciseLogs: [createExerciseLog({ exerciseId: "ex-1", weight: 100 })],
       }),
       createWorkout({
         date: "2026-02-15",
-        exerciseLogs: [
-          createExerciseLog({ exerciseId: "ex-1", weight: 110 }),
-        ],
+        exerciseLogs: [createExerciseLog({ exerciseId: "ex-1", weight: 110 })],
       }),
       createWorkout({
         date: "2026-02-18",
-        exerciseLogs: [
-          createExerciseLog({ exerciseId: "ex-1", weight: 115 }),
-        ],
+        exerciseLogs: [createExerciseLog({ exerciseId: "ex-1", weight: 115 })],
       }),
     ];
 
@@ -62,22 +55,17 @@ describe("prepareWeightChartData", () => {
   });
 
   it("returns empty arrays when exercise not found in any workout", async () => {
-    const { prepareWeightChartData } = await import(
-      "../../../src/components/stats/weight-chart.tsx"
-    );
+    const { prepareWeightChartData } =
+      await import("../../../src/components/stats/weight-chart.tsx");
 
     const workouts: Workout[] = [
       createWorkout({
         date: "2026-02-10",
-        exerciseLogs: [
-          createExerciseLog({ exerciseId: "ex-1", weight: 100 }),
-        ],
+        exerciseLogs: [createExerciseLog({ exerciseId: "ex-1", weight: 100 })],
       }),
       createWorkout({
         date: "2026-02-15",
-        exerciseLogs: [
-          createExerciseLog({ exerciseId: "ex-2", weight: 80 }),
-        ],
+        exerciseLogs: [createExerciseLog({ exerciseId: "ex-2", weight: 80 })],
       }),
     ];
 
@@ -88,34 +76,25 @@ describe("prepareWeightChartData", () => {
   });
 
   it("filtering by date range limits the data", async () => {
-    const { prepareWeightChartData } = await import(
-      "../../../src/components/stats/weight-chart.tsx"
-    );
+    const { prepareWeightChartData } =
+      await import("../../../src/components/stats/weight-chart.tsx");
 
     const workouts: Workout[] = [
       createWorkout({
         date: "2026-01-20",
-        exerciseLogs: [
-          createExerciseLog({ exerciseId: "ex-1", weight: 90 }),
-        ],
+        exerciseLogs: [createExerciseLog({ exerciseId: "ex-1", weight: 90 })],
       }),
       createWorkout({
         date: "2026-02-05",
-        exerciseLogs: [
-          createExerciseLog({ exerciseId: "ex-1", weight: 100 }),
-        ],
+        exerciseLogs: [createExerciseLog({ exerciseId: "ex-1", weight: 100 })],
       }),
       createWorkout({
         date: "2026-02-10",
-        exerciseLogs: [
-          createExerciseLog({ exerciseId: "ex-1", weight: 110 }),
-        ],
+        exerciseLogs: [createExerciseLog({ exerciseId: "ex-1", weight: 110 })],
       }),
       createWorkout({
         date: "2026-03-01",
-        exerciseLogs: [
-          createExerciseLog({ exerciseId: "ex-1", weight: 120 }),
-        ],
+        exerciseLogs: [createExerciseLog({ exerciseId: "ex-1", weight: 120 })],
       }),
     ];
 
@@ -129,28 +108,21 @@ describe("prepareWeightChartData", () => {
   });
 
   it("sorts by date ascending regardless of input order", async () => {
-    const { prepareWeightChartData } = await import(
-      "../../../src/components/stats/weight-chart.tsx"
-    );
+    const { prepareWeightChartData } =
+      await import("../../../src/components/stats/weight-chart.tsx");
 
     const workouts: Workout[] = [
       createWorkout({
         date: "2026-02-18",
-        exerciseLogs: [
-          createExerciseLog({ exerciseId: "ex-1", weight: 115 }),
-        ],
+        exerciseLogs: [createExerciseLog({ exerciseId: "ex-1", weight: 115 })],
       }),
       createWorkout({
         date: "2026-02-10",
-        exerciseLogs: [
-          createExerciseLog({ exerciseId: "ex-1", weight: 100 }),
-        ],
+        exerciseLogs: [createExerciseLog({ exerciseId: "ex-1", weight: 100 })],
       }),
       createWorkout({
         date: "2026-02-15",
-        exerciseLogs: [
-          createExerciseLog({ exerciseId: "ex-1", weight: 110 }),
-        ],
+        exerciseLogs: [createExerciseLog({ exerciseId: "ex-1", weight: 110 })],
       }),
     ];
 
@@ -161,9 +133,8 @@ describe("prepareWeightChartData", () => {
   });
 
   it("returns only workouts containing the specified exercise", async () => {
-    const { prepareWeightChartData } = await import(
-      "../../../src/components/stats/weight-chart.tsx"
-    );
+    const { prepareWeightChartData } =
+      await import("../../../src/components/stats/weight-chart.tsx");
 
     const workouts: Workout[] = [
       createWorkout({
@@ -175,9 +146,7 @@ describe("prepareWeightChartData", () => {
       }),
       createWorkout({
         date: "2026-02-12",
-        exerciseLogs: [
-          createExerciseLog({ exerciseId: "ex-2", weight: 65 }),
-        ],
+        exerciseLogs: [createExerciseLog({ exerciseId: "ex-2", weight: 65 })],
       }),
       createWorkout({
         date: "2026-02-15",

@@ -85,7 +85,7 @@ export function WorkoutDetail({ workoutId }: WorkoutDetailProps) {
                   {log.reps ? ` · ${log.reps} reps` : ""}
                 </div>
                 {log.notes && (
-                  <div class="mt-1 text-sm italic text-gray-400">
+                  <div class="mt-1 text-sm text-gray-400 italic">
                     {log.notes}
                   </div>
                 )}

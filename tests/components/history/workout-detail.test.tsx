@@ -142,9 +142,7 @@ describe("WorkoutDetail", () => {
     workoutHistory.value = [mockWorkout()];
     exercises.value = mockExerciseList();
 
-    const confirmSpy = vi
-      .spyOn(window, "confirm")
-      .mockReturnValue(true);
+    const confirmSpy = vi.spyOn(window, "confirm").mockReturnValue(true);
 
     renderDetail("w-1");
 

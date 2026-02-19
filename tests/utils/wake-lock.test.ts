@@ -52,9 +52,8 @@ describe("requestWakeLock", () => {
 
 describe("releaseWakeLock", () => {
   it("releases the wake lock when one is held", async () => {
-    const { requestWakeLock, releaseWakeLock } = await import(
-      "../../src/utils/wake-lock.ts"
-    );
+    const { requestWakeLock, releaseWakeLock } =
+      await import("../../src/utils/wake-lock.ts");
 
     await requestWakeLock();
     await releaseWakeLock();

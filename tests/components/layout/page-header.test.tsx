@@ -19,9 +19,7 @@ describe("PageHeader", () => {
 
   it("renders back button when onBack prop is provided", () => {
     render(<PageHeader title="With Back" onBack={() => {}} />);
-    expect(
-      screen.getByRole("button", { name: "Go back" }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Go back" })).toBeInTheDocument();
   });
 
   it("clicking back button calls the onBack callback", () => {

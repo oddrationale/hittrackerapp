@@ -62,10 +62,7 @@ export function TulChart({ filter }: TulChartProps) {
   useEffect(() => {
     if (!canvasRef.current) return;
 
-    const { labels, data } = prepareTulChartData(
-      workoutHistory.value,
-      filter,
-    );
+    const { labels, data } = prepareTulChartData(workoutHistory.value, filter);
 
     // Destroy previous chart
     if (chartRef.current) {
@@ -105,8 +102,10 @@ export function TulChart({ filter }: TulChartProps) {
         chartRef.current = null;
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     workoutHistory.value,
+    filter,
     filter?.exerciseId,
     filter?.dateRange?.start,
     filter?.dateRange?.end,

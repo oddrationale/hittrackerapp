@@ -44,9 +44,7 @@ export function WorkoutSummary() {
       <h2 class="mb-2 text-sm font-medium text-gray-500">Exercises</h2>
       <div class="space-y-2">
         {workout.exerciseLogs.map((log) => {
-          const exercise = exercises.value.find(
-            (e) => e.id === log.exerciseId,
-          );
+          const exercise = exercises.value.find((e) => e.id === log.exerciseId);
           const directionIcon =
             log.weightDirection === "increase"
               ? "\u2191"

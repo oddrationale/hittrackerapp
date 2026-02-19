@@ -1,5 +1,10 @@
 import Dexie from "dexie";
-import type { Exercise, Routine, Workout, UserSettings } from "../types/index.ts";
+import type {
+  Exercise,
+  Routine,
+  Workout,
+  UserSettings,
+} from "../types/index.ts";
 
 export class HitTrackerDB extends Dexie {
   exercises!: Dexie.Table<Exercise, string>;

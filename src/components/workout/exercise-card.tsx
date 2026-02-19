@@ -54,7 +54,7 @@ export function ExerciseCard({
             <label class="block text-sm font-medium text-gray-500">
               Time Under Load
             </label>
-            <div class="text-3xl font-bold tabular-nums text-gray-900">
+            <div class="text-3xl font-bold text-gray-900 tabular-nums">
               {Math.floor(tul.value / 60)}:
               {(tul.value % 60).toString().padStart(2, "0")}
             </div>

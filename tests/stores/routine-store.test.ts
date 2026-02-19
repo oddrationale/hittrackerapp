@@ -215,11 +215,7 @@ describe("Routine Store", () => {
       await reorderExercises("rt-1", ["ex-3", "ex-1", "ex-2"]);
 
       // Signal should be updated
-      expect(routines.value[0].exerciseIds).toEqual([
-        "ex-3",
-        "ex-1",
-        "ex-2",
-      ]);
+      expect(routines.value[0].exerciseIds).toEqual(["ex-3", "ex-1", "ex-2"]);
       expect(routines.value[0].lastModified).toBeGreaterThan(1000);
 
       // DB should be updated

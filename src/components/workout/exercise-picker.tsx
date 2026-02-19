@@ -40,7 +40,7 @@ export function ExercisePicker({ onSelect }: ExercisePickerProps) {
       ) : (
         Object.entries(grouped).map(([category, exs]) => (
           <div key={category}>
-            <h3 class="mb-1 text-xs font-semibold uppercase tracking-wide text-gray-500">
+            <h3 class="mb-1 text-xs font-semibold tracking-wide text-gray-500 uppercase">
               {category}
             </h3>
             <div class="space-y-1">

@@ -29,18 +29,12 @@ describe("App", () => {
       </LocationProvider>,
     );
     await waitFor(() => {
-      expect(
-        screen.getByRole("link", { name: "Workout" }),
-      ).toBeInTheDocument();
+      expect(screen.getByRole("link", { name: "Workout" })).toBeInTheDocument();
     });
     const nav = screen.getByRole("navigation");
     expect(nav).toBeInTheDocument();
-    expect(
-      screen.getByRole("link", { name: "History" }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "History" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Stats" })).toBeInTheDocument();
-    expect(
-      screen.getByRole("link", { name: "Settings" }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Settings" })).toBeInTheDocument();
   });
 });

@@ -6,7 +6,8 @@ describe("createTimer", () => {
     vi.useFakeTimers();
     vi.stubGlobal(
       "requestAnimationFrame",
-      (cb: FrameRequestCallback) => setTimeout(() => cb(Date.now()), 16) as unknown as number,
+      (cb: FrameRequestCallback) =>
+        setTimeout(() => cb(Date.now()), 16) as unknown as number,
     );
     vi.stubGlobal("cancelAnimationFrame", (id: number) => clearTimeout(id));
   });

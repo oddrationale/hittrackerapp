@@ -1,6 +1,10 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { db } from "../../src/db/database.ts";
-import { exportData, importData, parseImportFile } from "../../src/utils/export.ts";
+import {
+  exportData,
+  importData,
+  parseImportFile,
+} from "../../src/utils/export.ts";
 import type {
   Exercise,
   ExportData,
@@ -147,9 +151,7 @@ describe("Export Utility", () => {
         routines: [
           { ...sampleRoutine, name: "Updated Big 5", lastModified: now },
         ],
-        workouts: [
-          { ...sampleWorkout, date: "2026-02-19", lastModified: now },
-        ],
+        workouts: [{ ...sampleWorkout, date: "2026-02-19", lastModified: now }],
         settings: {
           weightUnit: "lbs",
           metronomeEnabled: false,

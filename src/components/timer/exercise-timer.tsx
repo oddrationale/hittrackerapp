@@ -51,7 +51,7 @@ export function ExerciseTimer({ onComplete }: ExerciseTimerProps) {
     }
     return (
       <div class="flex flex-col items-center py-8">
-        <div class="mb-4 text-6xl font-bold tabular-nums text-gray-900">
+        <div class="mb-4 text-6xl font-bold text-gray-900 tabular-nums">
           {timer.displayTime.value}
         </div>
         <button
@@ -68,7 +68,7 @@ export function ExerciseTimer({ onComplete }: ExerciseTimerProps) {
   return (
     <div class="flex flex-col items-center py-8">
       <p class="mb-2 text-sm text-gray-500">Time Under Load</p>
-      <div class="text-5xl font-bold tabular-nums text-gray-900">
+      <div class="text-5xl font-bold text-gray-900 tabular-nums">
         {timer.displayTime.value}
       </div>
     </div>

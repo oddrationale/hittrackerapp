@@ -27,6 +27,7 @@ Run a single test file: `pnpm vitest run tests/app.test.tsx`
 - **Styling**: Tailwind CSS v4 via Vite plugin, class ordering enforced by prettier-plugin-tailwindcss
 
 **TypeScript project references** (three separate tsconfigs):
+
 - `tsconfig.app.json` — `src/` (app code, DOM types, Preact JSX)
 - `tsconfig.node.json` — `vite.config.ts` and other build tool configs
 - `tsconfig.test.json` — `tests/` (vitest globals types)

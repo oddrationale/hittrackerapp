@@ -26,7 +26,10 @@ export function ExerciseManager() {
 
   function handleAdd() {
     if (formName.value.trim()) {
-      addExercise(formName.value.trim(), formCategory.value.trim() || undefined);
+      addExercise(
+        formName.value.trim(),
+        formCategory.value.trim() || undefined,
+      );
       formName.value = "";
       formCategory.value = "";
       showForm.value = false;
@@ -72,17 +75,12 @@ export function ExerciseManager() {
 
   return (
     <div>
-      <PageHeader
-        title="Manage Exercises"
-        onBack={() => route("/settings")}
-      />
+      <PageHeader title="Manage Exercises" onBack={() => route("/settings")} />
       <div class="space-y-4 p-4">
         {/* Add Exercise Button / Form */}
         {showForm.value ? (
           <div class="rounded-lg bg-white p-4 shadow-sm">
-            <h2 class="mb-3 text-sm font-medium text-gray-700">
-              Add Exercise
-            </h2>
+            <h2 class="mb-3 text-sm font-medium text-gray-700">Add Exercise</h2>
             <div class="space-y-3">
               <input
                 type="text"
@@ -161,9 +159,7 @@ export function ExerciseManager() {
                         placeholder="Exercise name"
                         value={formName.value}
                         onInput={(e) => {
-                          formName.value = (
-                            e.target as HTMLInputElement
-                          ).value;
+                          formName.value = (e.target as HTMLInputElement).value;
                         }}
                         class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
                       />
@@ -195,9 +191,7 @@ export function ExerciseManager() {
                     </div>
                   ) : (
                     <div class="flex items-center justify-between px-4 py-3">
-                      <span class="text-sm text-gray-700">
-                        {exercise.name}
-                      </span>
+                      <span class="text-sm text-gray-700">{exercise.name}</span>
                       <div class="flex gap-1">
                         <button
                           onClick={() => handleEdit(exercise.id)}

@@ -11,7 +11,7 @@ export function TabBar() {
   const { path } = useLocation();
 
   return (
-    <nav class="fixed bottom-0 left-0 right-0 border-t border-gray-200 bg-white">
+    <nav class="fixed right-0 bottom-0 left-0 border-t border-gray-200 bg-white">
       <div class="grid grid-cols-4">
         {tabs.map((tab) => {
           const isActive =

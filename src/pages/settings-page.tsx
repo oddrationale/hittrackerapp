@@ -85,10 +85,7 @@ export function SettingsPage() {
             max="10"
             value={settings.value.countdownDuration}
             onInput={(e) => {
-              const val = parseInt(
-                (e.target as HTMLInputElement).value,
-                10,
-              );
+              const val = parseInt((e.target as HTMLInputElement).value, 10);
               if (val >= 1 && val <= 10) {
                 updateSettings({ countdownDuration: val });
               }

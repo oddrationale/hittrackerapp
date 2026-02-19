@@ -1,8 +1,5 @@
 import { db } from "../db/database.ts";
-import type {
-  ExportData,
-  UserSettings,
-} from "../types/index.ts";
+import type { ExportData, UserSettings } from "../types/index.ts";
 
 const CURRENT_SCHEMA_VERSION = 1;
 

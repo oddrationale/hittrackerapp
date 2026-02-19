@@ -3,11 +3,9 @@ import { describe, it, expect, vi } from "vitest";
 
 // Mock ExerciseTimer to simplify testing the form logic
 vi.mock("../../../src/components/timer/exercise-timer.tsx", () => ({
-  ExerciseTimer: ({
-    onComplete,
-  }: {
-    onComplete: (tul: number) => void;
-  }) => <button onClick={() => onComplete(90)}>Mock Timer Complete</button>,
+  ExerciseTimer: ({ onComplete }: { onComplete: (tul: number) => void }) => (
+    <button onClick={() => onComplete(90)}>Mock Timer Complete</button>
+  ),
 }));
 
 import { ExerciseCard } from "../../../src/components/workout/exercise-card.tsx";

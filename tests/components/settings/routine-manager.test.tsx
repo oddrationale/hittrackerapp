@@ -108,9 +108,7 @@ describe("RoutineManager", () => {
     fireEvent.click(addButton);
 
     // Form should now be visible
-    expect(
-      screen.getByPlaceholderText(/routine name/i),
-    ).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/routine name/i)).toBeInTheDocument();
   });
 
   it("form has name field and exercise selection (checkboxes from exercise library)", () => {
@@ -120,9 +118,7 @@ describe("RoutineManager", () => {
     fireEvent.click(screen.getByRole("button", { name: /add routine/i }));
 
     // Name field
-    expect(
-      screen.getByPlaceholderText(/routine name/i),
-    ).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/routine name/i)).toBeInTheDocument();
 
     // Exercise checkboxes - each exercise should appear as a checkbox option
     const checkboxes = screen.getAllByRole("checkbox");

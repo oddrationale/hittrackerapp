@@ -77,9 +77,7 @@ describe("StatsPage", () => {
   });
 
   it("renders exercise filter dropdown", () => {
-    workoutHistory.value = [
-      createWorkout({ totalTul: 300, tulRatio: 0.25 }),
-    ];
+    workoutHistory.value = [createWorkout({ totalTul: 300, tulRatio: 0.25 })];
     exercises.value = [
       createExercise({ id: "ex-1", name: "Chest Press" }),
       createExercise({ id: "ex-2", name: "Leg Press" }),
@@ -95,9 +93,7 @@ describe("StatsPage", () => {
   });
 
   it("renders date range filter (30d, 90d, 1y, all)", () => {
-    workoutHistory.value = [
-      createWorkout({ totalTul: 300, tulRatio: 0.25 }),
-    ];
+    workoutHistory.value = [createWorkout({ totalTul: 300, tulRatio: 0.25 })];
 
     renderStatsPage();
 
@@ -114,9 +110,7 @@ describe("StatsPage", () => {
   });
 
   it("changing exercise filter updates which exercise is selected", () => {
-    workoutHistory.value = [
-      createWorkout({ totalTul: 300, tulRatio: 0.25 }),
-    ];
+    workoutHistory.value = [createWorkout({ totalTul: 300, tulRatio: 0.25 })];
     exercises.value = [
       createExercise({ id: "ex-1", name: "Chest Press" }),
       createExercise({ id: "ex-2", name: "Leg Press" }),

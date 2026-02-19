@@ -78,8 +78,8 @@ export function DataManager() {
       {importResult.value && (
         <div class="rounded-lg bg-green-50 p-3 text-sm text-green-700">
           Import complete: {importResult.value.added} added,{" "}
-          {importResult.value.updated} updated,{" "}
-          {importResult.value.skipped} skipped
+          {importResult.value.updated} updated, {importResult.value.skipped}{" "}
+          skipped
         </div>
       )}
       {importError.value && (

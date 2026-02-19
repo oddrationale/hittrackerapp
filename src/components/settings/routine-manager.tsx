@@ -93,10 +93,7 @@ export function RoutineManager() {
               {category}
             </p>
             {grouped[category].map((exercise) => (
-              <label
-                key={exercise.id}
-                class="flex items-center gap-2 py-1"
-              >
+              <label key={exercise.id} class="flex items-center gap-2 py-1">
                 <input
                   type="checkbox"
                   checked={selectedExerciseIds.value.includes(exercise.id)}
@@ -114,17 +111,12 @@ export function RoutineManager() {
 
   return (
     <div>
-      <PageHeader
-        title="Manage Routines"
-        onBack={() => route("/settings")}
-      />
+      <PageHeader title="Manage Routines" onBack={() => route("/settings")} />
       <div class="space-y-4 p-4">
         {/* Add Routine Button / Form */}
         {showForm.value ? (
           <div class="rounded-lg bg-white p-4 shadow-sm">
-            <h2 class="mb-3 text-sm font-medium text-gray-700">
-              Add Routine
-            </h2>
+            <h2 class="mb-3 text-sm font-medium text-gray-700">Add Routine</h2>
             <div class="space-y-3">
               <input
                 type="text"

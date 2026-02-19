@@ -30,9 +30,8 @@ function createWorkout(overrides: Partial<Workout> = {}): Workout {
 
 describe("prepareTulChartData", () => {
   it("returns labels and data arrays for TUL over time", async () => {
-    const { prepareTulChartData } = await import(
-      "../../../src/components/stats/tul-chart.tsx"
-    );
+    const { prepareTulChartData } =
+      await import("../../../src/components/stats/tul-chart.tsx");
 
     const workouts: Workout[] = [
       createWorkout({ date: "2026-02-10", totalTul: 200 }),
@@ -47,9 +46,8 @@ describe("prepareTulChartData", () => {
   });
 
   it("filtering by exercise shows only that exercise's data", async () => {
-    const { prepareTulChartData } = await import(
-      "../../../src/components/stats/tul-chart.tsx"
-    );
+    const { prepareTulChartData } =
+      await import("../../../src/components/stats/tul-chart.tsx");
 
     const workouts: Workout[] = [
       createWorkout({
@@ -63,9 +61,7 @@ describe("prepareTulChartData", () => {
       createWorkout({
         date: "2026-02-12",
         totalTul: 150,
-        exerciseLogs: [
-          createExerciseLog({ exerciseId: "ex-2", tul: 150 }),
-        ],
+        exerciseLogs: [createExerciseLog({ exerciseId: "ex-2", tul: 150 })],
       }),
       createWorkout({
         date: "2026-02-15",
@@ -85,9 +81,8 @@ describe("prepareTulChartData", () => {
   });
 
   it("filtering by date range limits the data", async () => {
-    const { prepareTulChartData } = await import(
-      "../../../src/components/stats/tul-chart.tsx"
-    );
+    const { prepareTulChartData } =
+      await import("../../../src/components/stats/tul-chart.tsx");
 
     const workouts: Workout[] = [
       createWorkout({ date: "2026-01-20", totalTul: 100 }),
@@ -105,9 +100,8 @@ describe("prepareTulChartData", () => {
   });
 
   it("returns empty arrays when no data matches", async () => {
-    const { prepareTulChartData } = await import(
-      "../../../src/components/stats/tul-chart.tsx"
-    );
+    const { prepareTulChartData } =
+      await import("../../../src/components/stats/tul-chart.tsx");
 
     const workouts: Workout[] = [
       createWorkout({ date: "2026-01-10", totalTul: 100 }),
@@ -123,9 +117,8 @@ describe("prepareTulChartData", () => {
   });
 
   it("returns empty arrays when workouts array is empty", async () => {
-    const { prepareTulChartData } = await import(
-      "../../../src/components/stats/tul-chart.tsx"
-    );
+    const { prepareTulChartData } =
+      await import("../../../src/components/stats/tul-chart.tsx");
 
     const result = prepareTulChartData([]);
 
@@ -134,9 +127,8 @@ describe("prepareTulChartData", () => {
   });
 
   it("per-workout total TUL: each data point is the total TUL of a workout", async () => {
-    const { prepareTulChartData } = await import(
-      "../../../src/components/stats/tul-chart.tsx"
-    );
+    const { prepareTulChartData } =
+      await import("../../../src/components/stats/tul-chart.tsx");
 
     const workouts: Workout[] = [
       createWorkout({
@@ -165,9 +157,8 @@ describe("prepareTulChartData", () => {
   });
 
   it("sorts workouts by date ascending regardless of input order", async () => {
-    const { prepareTulChartData } = await import(
-      "../../../src/components/stats/tul-chart.tsx"
-    );
+    const { prepareTulChartData } =
+      await import("../../../src/components/stats/tul-chart.tsx");
 
     const workouts: Workout[] = [
       createWorkout({ date: "2026-02-18", totalTul: 400 }),
@@ -182,9 +173,8 @@ describe("prepareTulChartData", () => {
   });
 
   it("combines exercise filter with date range filter", async () => {
-    const { prepareTulChartData } = await import(
-      "../../../src/components/stats/tul-chart.tsx"
-    );
+    const { prepareTulChartData } =
+      await import("../../../src/components/stats/tul-chart.tsx");
 
     const workouts: Workout[] = [
       createWorkout({

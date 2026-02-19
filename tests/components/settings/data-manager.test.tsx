@@ -19,8 +19,7 @@ const mockParseImportFile = vi.fn<(file: File) => Promise<ExportData>>();
 vi.mock("../../../src/utils/export.ts", () => ({
   exportData: (...args: unknown[]) => mockExportData(...(args as [])),
   downloadExport: (...args: unknown[]) => mockDownloadExport(...(args as [])),
-  importData: (...args: unknown[]) =>
-    mockImportData(...(args as [ExportData])),
+  importData: (...args: unknown[]) => mockImportData(...(args as [ExportData])),
   parseImportFile: (...args: unknown[]) =>
     mockParseImportFile(...(args as [File])),
 }));
@@ -84,7 +83,9 @@ describe("DataManager", () => {
         el.click = () => {
           // Define files property
           Object.defineProperty(el, "files", {
-            value: [new File(['{}'], "export.json", { type: "application/json" })],
+            value: [
+              new File(["{}"], "export.json", { type: "application/json" }),
+            ],
           });
           // Trigger onchange
           if ((el as HTMLInputElement).onchange) {
@@ -118,7 +119,7 @@ describe("DataManager", () => {
       if (tag === "input") {
         el.click = () => {
           Object.defineProperty(el, "files", {
-            value: [new File(['{}'], "bad.json", { type: "application/json" })],
+            value: [new File(["{}"], "bad.json", { type: "application/json" })],
           });
           if ((el as HTMLInputElement).onchange) {
             (el as HTMLInputElement).onchange!(new Event("change"));
