@@ -1,5 +1,6 @@
 import { computed } from "@preact/signals";
 import { PageHeader } from "../components/layout/page-header.tsx";
+import { WorkoutDetail } from "../components/history/workout-detail.tsx";
 import { workoutHistory } from "../stores/history-store.ts";
 import { routines } from "../stores/routine-store.ts";
 import { useLocation } from "preact-iso";
@@ -26,15 +27,10 @@ function formatDate(dateStr: string): string {
 export function HistoryPage() {
   const { path } = useLocation();
 
-  // If path has an ID, show detail view (Task 29 will implement this)
+  // If path has an ID, show detail view
   const match = path.match(/^\/history\/(.+)$/);
   if (match) {
-    return (
-      <div>
-        <PageHeader title="Workout Detail" />
-        <p class="p-4 text-gray-500">Detail view coming soon</p>
-      </div>
-    );
+    return <WorkoutDetail workoutId={match[1]} />;
   }
 
   return (
