@@ -3,17 +3,12 @@ import { PageHeader } from "../components/layout/page-header.tsx";
 import { WorkoutDetail } from "../components/history/workout-detail.tsx";
 import { workoutHistory } from "../stores/history-store.ts";
 import { routines } from "../stores/routine-store.ts";
+import { formatTime } from "../utils/format.ts";
 import { useLocation } from "preact-iso";
 
 const sortedHistory = computed(() =>
   [...workoutHistory.value].sort((a, b) => b.date.localeCompare(a.date)),
 );
-
-function formatTime(seconds: number): string {
-  const mins = Math.floor(seconds / 60);
-  const secs = seconds % 60;
-  return `${mins}:${secs.toString().padStart(2, "0")}`;
-}
 
 function formatDate(dateStr: string): string {
   const date = new Date(dateStr + "T00:00:00");

@@ -22,6 +22,7 @@ export function TabBar() {
             <a
               key={tab.path}
               href={tab.path}
+              aria-current={isActive ? "page" : undefined}
               class={`flex flex-col items-center py-2 text-xs ${
                 isActive ? "font-semibold text-blue-600" : "text-gray-500"
               }`}

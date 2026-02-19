@@ -1,4 +1,4 @@
-import { signal } from "@preact/signals";
+import { useSignal } from "@preact/signals";
 import {
   routines,
   addRoutine,
@@ -9,20 +9,12 @@ import { exercisesByCategory } from "../../stores/exercise-store.ts";
 import { PageHeader } from "../layout/page-header.tsx";
 import { useLocation } from "preact-iso";
 
-const showForm = signal(false);
-const editingId = signal<string | null>(null);
-const formName = signal("");
-const selectedExerciseIds = signal<string[]>([]);
-
-export function resetRoutineManager(): void {
-  showForm.value = false;
-  editingId.value = null;
-  formName.value = "";
-  selectedExerciseIds.value = [];
-}
-
 export function RoutineManager() {
   const { route } = useLocation();
+  const showForm = useSignal(false);
+  const editingId = useSignal<string | null>(null);
+  const formName = useSignal("");
+  const selectedExerciseIds = useSignal<string[]>([]);
 
   function toggleExercise(exerciseId: string) {
     const current = selectedExerciseIds.value;
@@ -73,10 +65,6 @@ export function RoutineManager() {
     if (confirm("Delete this routine?")) {
       deleteRoutine(id);
     }
-  }
-
-  function getExerciseCount(exerciseIds: string[]): number {
-    return exerciseIds.length;
   }
 
   const grouped = exercisesByCategory.value;
@@ -205,7 +193,7 @@ export function RoutineManager() {
                     {routine.name}
                   </p>
                   <p class="text-xs text-gray-500">
-                    {getExerciseCount(routine.exerciseIds)} exercises
+                    {routine.exerciseIds.length} exercises
                   </p>
                 </div>
                 <div class="flex gap-1">

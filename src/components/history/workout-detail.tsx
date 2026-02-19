@@ -2,13 +2,8 @@ import { PageHeader } from "../layout/page-header.tsx";
 import { getWorkout, deleteWorkout } from "../../stores/history-store.ts";
 import { exercises } from "../../stores/exercise-store.ts";
 import { settings } from "../../stores/settings-store.ts";
+import { formatTime } from "../../utils/format.ts";
 import { useLocation } from "preact-iso";
-
-function formatTime(seconds: number): string {
-  const mins = Math.floor(seconds / 60);
-  const secs = seconds % 60;
-  return `${mins}:${secs.toString().padStart(2, "0")}`;
-}
 
 interface WorkoutDetailProps {
   workoutId: string;

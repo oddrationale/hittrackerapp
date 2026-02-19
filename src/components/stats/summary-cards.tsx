@@ -1,4 +1,5 @@
 import { workoutHistory } from "../../stores/history-store.ts";
+import { formatTime } from "../../utils/format.ts";
 import type { Workout } from "../../types/index.ts";
 
 export function computeStats(workouts: Workout[]) {
@@ -51,12 +52,6 @@ function getWeekKey(dateStr: string): string {
   );
   const weekNum = Math.ceil((days + startOfYear.getDay() + 1) / 7);
   return `${date.getFullYear()}-W${weekNum}`;
-}
-
-function formatTime(seconds: number): string {
-  const mins = Math.floor(seconds / 60);
-  const secs = seconds % 60;
-  return `${mins}:${secs.toString().padStart(2, "0")}`;
 }
 
 export function SummaryCards() {

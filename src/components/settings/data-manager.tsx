@@ -1,4 +1,4 @@
-import { signal } from "@preact/signals";
+import { useSignal } from "@preact/signals";
 import {
   exportData,
   downloadExport,
@@ -6,23 +6,16 @@ import {
   parseImportFile,
 } from "../../utils/export.ts";
 
-const importResult = signal<{
-  added: number;
-  updated: number;
-  skipped: number;
-} | null>(null);
-const importError = signal<string | null>(null);
-const isExporting = signal(false);
-const isImporting = signal(false);
-
-export function resetDataManager() {
-  importResult.value = null;
-  importError.value = null;
-  isExporting.value = false;
-  isImporting.value = false;
-}
-
 export function DataManager() {
+  const importResult = useSignal<{
+    added: number;
+    updated: number;
+    skipped: number;
+  } | null>(null);
+  const importError = useSignal<string | null>(null);
+  const isExporting = useSignal(false);
+  const isImporting = useSignal(false);
+
   async function handleExport() {
     isExporting.value = true;
     try {

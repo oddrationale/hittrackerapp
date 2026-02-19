@@ -1,13 +1,8 @@
 import { lastCompletedWorkout } from "../../stores/workout-store.ts";
 import { exercises } from "../../stores/exercise-store.ts";
 import { settings } from "../../stores/settings-store.ts";
+import { formatTime } from "../../utils/format.ts";
 import { useLocation } from "preact-iso";
-
-function formatTime(seconds: number): string {
-  const mins = Math.floor(seconds / 60);
-  const secs = seconds % 60;
-  return `${mins}:${secs.toString().padStart(2, "0")}`;
-}
 
 export function WorkoutSummary() {
   const { route } = useLocation();

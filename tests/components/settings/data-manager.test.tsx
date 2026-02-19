@@ -1,9 +1,6 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/preact";
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import {
-  DataManager,
-  resetDataManager,
-} from "../../../src/components/settings/data-manager.tsx";
+import { DataManager } from "../../../src/components/settings/data-manager.tsx";
 import type { ExportData } from "../../../src/types/index.ts";
 
 const mockExportData = vi.fn<() => Promise<ExportData>>();
@@ -38,7 +35,6 @@ const fakeExport: ExportData = {
 
 describe("DataManager", () => {
   beforeEach(() => {
-    resetDataManager();
     vi.clearAllMocks();
   });
 

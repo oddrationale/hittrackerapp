@@ -22,6 +22,7 @@ import type { Exercise, ExerciseLog } from "../types/index.ts";
 function ActiveWorkout() {
   const { route } = useLocation();
   const selectedExercise = useSignal<Exercise | null>(null);
+  const elapsedSeconds = useSignal(0);
 
   // Wake lock on mount, release on unmount
   useEffect(() => {
@@ -29,6 +30,22 @@ function ActiveWorkout() {
     return () => {
       releaseWakeLock();
     };
+  }, []);
+
+  // Update elapsed time every second
+  useEffect(() => {
+    const workout = activeWorkout.value;
+    if (!workout) return;
+
+    function tick() {
+      elapsedSeconds.value = Math.floor(
+        (Date.now() - workout!.startTime) / 1000,
+      );
+    }
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const workout = activeWorkout.value!;
@@ -64,9 +81,8 @@ function ActiveWorkout() {
   }
 
   // Overall workout time display
-  const workoutElapsed = Math.floor((Date.now() - workout.startTime) / 1000);
-  const workoutMins = Math.floor(workoutElapsed / 60);
-  const workoutSecs = workoutElapsed % 60;
+  const workoutMins = Math.floor(elapsedSeconds.value / 60);
+  const workoutSecs = elapsedSeconds.value % 60;
 
   // If all exercises in routine are done
   const allExercisesDone = routine

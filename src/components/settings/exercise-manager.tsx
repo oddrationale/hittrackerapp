@@ -1,4 +1,4 @@
-import { signal } from "@preact/signals";
+import { useSignal } from "@preact/signals";
 import {
   exercises,
   exercisesByCategory,
@@ -9,20 +9,12 @@ import {
 import { PageHeader } from "../layout/page-header.tsx";
 import { useLocation } from "preact-iso";
 
-const showForm = signal(false);
-const editingId = signal<string | null>(null);
-const formName = signal("");
-const formCategory = signal("");
-
-export function resetExerciseManager(): void {
-  showForm.value = false;
-  editingId.value = null;
-  formName.value = "";
-  formCategory.value = "";
-}
-
 export function ExerciseManager() {
   const { route } = useLocation();
+  const showForm = useSignal(false);
+  const editingId = useSignal<string | null>(null);
+  const formName = useSignal("");
+  const formCategory = useSignal("");
 
   function handleAdd() {
     if (formName.value.trim()) {

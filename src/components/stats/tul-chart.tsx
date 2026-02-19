@@ -1,16 +1,15 @@
 import { useEffect, useRef } from "preact/hooks";
-import { Chart, registerables } from "chart.js";
+import { Chart } from "chart.js";
+import "../../utils/chart-setup.ts";
 import { workoutHistory } from "../../stores/history-store.ts";
 import type { Workout } from "../../types/index.ts";
-
-Chart.register(...registerables);
 
 export interface ChartFilter {
   exerciseId?: string;
   dateRange?: { start: string; end: string };
 }
 
-// Pure function — easy to test
+// Pure function -- easy to test
 export function prepareTulChartData(
   workouts: Workout[],
   filter?: ChartFilter,
@@ -59,10 +58,10 @@ export function TulChart({ filter }: TulChartProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const chartRef = useRef<Chart | null>(null);
 
+  const { labels, data } = prepareTulChartData(workoutHistory.value, filter);
+
   useEffect(() => {
     if (!canvasRef.current) return;
-
-    const { labels, data } = prepareTulChartData(workoutHistory.value, filter);
 
     // Destroy previous chart
     if (chartRef.current) {
@@ -110,8 +109,6 @@ export function TulChart({ filter }: TulChartProps) {
     filter?.dateRange?.start,
     filter?.dateRange?.end,
   ]);
-
-  const { labels } = prepareTulChartData(workoutHistory.value, filter);
 
   if (labels.length === 0) {
     return (

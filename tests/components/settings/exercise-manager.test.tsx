@@ -1,10 +1,7 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/preact";
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { LocationProvider } from "preact-iso";
-import {
-  ExerciseManager,
-  resetExerciseManager,
-} from "../../../src/components/settings/exercise-manager.tsx";
+import { ExerciseManager } from "../../../src/components/settings/exercise-manager.tsx";
 import { exercises } from "../../../src/stores/exercise-store.ts";
 import type { Exercise } from "../../../src/types/index.ts";
 
@@ -55,7 +52,6 @@ function seedExercises(): Exercise[] {
 describe("ExerciseManager", () => {
   beforeEach(() => {
     exercises.value = [];
-    resetExerciseManager();
   });
 
   it("lists exercises grouped by category", () => {

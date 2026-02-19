@@ -1,10 +1,7 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/preact";
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { LocationProvider } from "preact-iso";
-import {
-  RoutineManager,
-  resetRoutineManager,
-} from "../../../src/components/settings/routine-manager.tsx";
+import { RoutineManager } from "../../../src/components/settings/routine-manager.tsx";
 import { routines } from "../../../src/stores/routine-store.ts";
 import { exercises } from "../../../src/stores/exercise-store.ts";
 import type { Exercise } from "../../../src/types/index.ts";
@@ -77,7 +74,6 @@ describe("RoutineManager", () => {
   beforeEach(() => {
     exercises.value = [];
     routines.value = [];
-    resetRoutineManager();
   });
 
   it("lists all routines with their exercise counts", () => {

@@ -1,11 +1,10 @@
 import { useEffect, useRef } from "preact/hooks";
-import { Chart, registerables } from "chart.js";
+import { Chart } from "chart.js";
+import "../../utils/chart-setup.ts";
 import { workoutHistory } from "../../stores/history-store.ts";
 import type { Workout } from "../../types/index.ts";
 
-Chart.register(...registerables);
-
-// Pure function — easy to test
+// Pure function -- easy to test
 export function prepareWeightChartData(
   workouts: Workout[],
   exerciseId: string,
@@ -43,14 +42,14 @@ export function WeightChart({ exerciseId, dateRange }: WeightChartProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const chartRef = useRef<Chart | null>(null);
 
+  const { labels, data } = prepareWeightChartData(
+    workoutHistory.value,
+    exerciseId,
+    dateRange,
+  );
+
   useEffect(() => {
     if (!canvasRef.current) return;
-
-    const { labels, data } = prepareWeightChartData(
-      workoutHistory.value,
-      exerciseId,
-      dateRange,
-    );
 
     // Destroy previous chart
     if (chartRef.current) {
@@ -101,12 +100,6 @@ export function WeightChart({ exerciseId, dateRange }: WeightChartProps) {
     dateRange?.start,
     dateRange?.end,
   ]);
-
-  const { labels } = prepareWeightChartData(
-    workoutHistory.value,
-    exerciseId,
-    dateRange,
-  );
 
   if (labels.length === 0) {
     return (
