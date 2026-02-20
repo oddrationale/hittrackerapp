@@ -43,6 +43,7 @@ Run a single test file: `pnpm vitest run tests/app.test.tsx`
 ## Skills
 
 - **`/preact-signals`**: MUST be invoked whenever implementing or modifying state management — this includes creating signals, computed values, effects, batched updates, or any `@preact/signals` usage.
+- **`/frontend-design`**: MUST be invoked when building web components, pages, or applications — guides creation of distinctive, production-grade frontend interfaces with high design quality.
 
 ## Testing
 
