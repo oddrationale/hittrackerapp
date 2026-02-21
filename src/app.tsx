@@ -1,12 +1,17 @@
 import { useEffect } from "preact/hooks";
 import { signal } from "@preact/signals";
-import { Router, Route, ErrorBoundary } from "preact-iso";
+import { Router, Route, ErrorBoundary, useLocation } from "preact-iso";
 import { TabBar } from "./components/layout/tab-bar.tsx";
 import { WorkoutPage } from "./pages/workout-page.tsx";
 import { HistoryPage } from "./pages/history-page.tsx";
 import { StatsPage } from "./pages/stats-page.tsx";
 import { SettingsPage } from "./pages/settings-page.tsx";
 import { NotFoundPage } from "./pages/not-found-page.tsx";
+import { Concept1 } from "./pages/concepts/concept-1.tsx";
+import { Concept2 } from "./pages/concepts/concept-2.tsx";
+import { Concept3 } from "./pages/concepts/concept-3.tsx";
+import { Concept4 } from "./pages/concepts/concept-4.tsx";
+import { Concept5 } from "./pages/concepts/concept-5.tsx";
 import { loadSettings } from "./stores/settings-store.ts";
 import { loadExercises } from "./stores/exercise-store.ts";
 import { loadRoutines } from "./stores/routine-store.ts";
@@ -37,9 +42,27 @@ async function initializeApp(): Promise<void> {
 }
 
 export function App() {
+  const { path } = useLocation();
+
   useEffect(() => {
     initializeApp();
   }, []);
+
+  const isConceptRoute = /^\/[1-5]$/.test(path);
+
+  if (isConceptRoute) {
+    return (
+      <ErrorBoundary>
+        <Router>
+          <Route path="/1" component={Concept1} />
+          <Route path="/2" component={Concept2} />
+          <Route path="/3" component={Concept3} />
+          <Route path="/4" component={Concept4} />
+          <Route path="/5" component={Concept5} />
+        </Router>
+      </ErrorBoundary>
+    );
+  }
 
   if (isLoading.value) {
     return (
