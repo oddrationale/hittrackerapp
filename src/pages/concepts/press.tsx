@@ -1,7 +1,7 @@
 /**
- * Concept 5: "Press"
- * Editorial magazine — bold typography, rule lines, structured layout.
- * Think: a fitness magazine front page meets Swiss design precision.
+ * "Press" — Editorial magazine homepage
+ * Bold typography, rule lines, structured layout.
+ * A fitness magazine front page meets Swiss design precision.
  *
  * Fonts: Bebas Neue (display) + Barlow (body)
  * Colors: #F7F5F0 warm newsprint bg, #1A1A1A text, #0047FF editorial blue
@@ -13,7 +13,7 @@ const routines = [
   { name: "Lower Body", count: 4 },
 ];
 
-export function Concept5() {
+export function Press() {
   return (
     <div
       class="relative min-h-screen bg-[#F7F5F0] text-[#1A1A1A]"

@@ -7,11 +7,7 @@ import { HistoryPage } from "./pages/history-page.tsx";
 import { StatsPage } from "./pages/stats-page.tsx";
 import { SettingsPage } from "./pages/settings-page.tsx";
 import { NotFoundPage } from "./pages/not-found-page.tsx";
-import { Concept1 } from "./pages/concepts/concept-1.tsx";
-import { Concept2 } from "./pages/concepts/concept-2.tsx";
-import { Concept3 } from "./pages/concepts/concept-3.tsx";
-import { Concept4 } from "./pages/concepts/concept-4.tsx";
-import { Concept5 } from "./pages/concepts/concept-5.tsx";
+import { Press } from "./pages/concepts/press.tsx";
 import { loadSettings } from "./stores/settings-store.ts";
 import { loadExercises } from "./stores/exercise-store.ts";
 import { loadRoutines } from "./stores/routine-store.ts";
@@ -48,23 +44,7 @@ export function App() {
     initializeApp();
   }, []);
 
-  const isConceptRoute = /^\/[1-5]$/.test(path);
-
-  if (isConceptRoute) {
-    return (
-      <ErrorBoundary>
-        <Router>
-          <Route path="/1" component={Concept1} />
-          <Route path="/2" component={Concept2} />
-          <Route path="/3" component={Concept3} />
-          <Route path="/4" component={Concept4} />
-          <Route path="/5" component={Concept5} />
-        </Router>
-      </ErrorBoundary>
-    );
-  }
-
-  if (isLoading.value) {
+  if (isLoading.value && path !== "/press") {
     return (
       <div class="flex min-h-screen items-center justify-center">
         <p>Loading...</p>
@@ -77,6 +57,7 @@ export function App() {
       <main class="flex-1 pb-16">
         <ErrorBoundary>
           <Router>
+            <Route path="/press" component={Press} />
             <Route path="/" component={WorkoutPage} />
             <Route path="/workout/active" component={WorkoutPage} />
             <Route path="/workout/summary" component={WorkoutPage} />
