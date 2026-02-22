@@ -8,6 +8,9 @@ import { StatsPage } from "./pages/stats-page.tsx";
 import { SettingsPage } from "./pages/settings-page.tsx";
 import { NotFoundPage } from "./pages/not-found-page.tsx";
 import { Press } from "./pages/concepts/press.tsx";
+import { Dashboard } from "./pages/concepts/dashboard.tsx";
+import { Feed } from "./pages/concepts/feed.tsx";
+import { Compact } from "./pages/concepts/compact.tsx";
 import { loadSettings } from "./stores/settings-store.ts";
 import { loadExercises } from "./stores/exercise-store.ts";
 import { loadRoutines } from "./stores/routine-store.ts";
@@ -44,7 +47,7 @@ export function App() {
     initializeApp();
   }, []);
 
-  if (isLoading.value && path !== "/press") {
+  if (isLoading.value && !["/press", "/1", "/2", "/3"].includes(path)) {
     return (
       <div class="flex min-h-screen items-center justify-center">
         <p>Loading...</p>
@@ -58,6 +61,9 @@ export function App() {
         <ErrorBoundary>
           <Router>
             <Route path="/press" component={Press} />
+            <Route path="/1" component={Dashboard} />
+            <Route path="/2" component={Feed} />
+            <Route path="/3" component={Compact} />
             <Route path="/" component={WorkoutPage} />
             <Route path="/workout/active" component={WorkoutPage} />
             <Route path="/workout/summary" component={WorkoutPage} />
