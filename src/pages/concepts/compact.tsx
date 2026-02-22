@@ -106,7 +106,7 @@ export function Compact() {
             {stats.map((stat, i) => (
               <div
                 key={stat.label}
-                class={`px-4 py-4 text-center${i < stats.length - 1 ? " border-r border-[#1A1A1A]/[0.08]" : ""}`}
+                class={`px-4 py-4 text-center${i < stats.length - 1 ? "border-r border-[#1A1A1A]/[0.08]" : ""}`}
               >
                 <p
                   class="text-[22px] leading-none tracking-[0.02em]"
