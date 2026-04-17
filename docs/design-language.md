@@ -24,38 +24,41 @@ HIT Tracker's visual identity draws from editorial print design: rule lines inst
 
 ### Font Stack
 
-| Role        | Family                          | Weight(s)        | Fallback        |
-| ----------- | ------------------------------- | ---------------- | --------------- |
-| **Display** | **Bebas Neue**                  | 400 (Regular)    | `sans-serif`    |
-| **Body**    | **Barlow**                      | 300, 400, 500, 600 | `sans-serif` |
+| Role        | Family         | Weight(s)          | Fallback     |
+| ----------- | -------------- | ------------------ | ------------ |
+| **Display** | **Bebas Neue** | 400 (Regular)      | `sans-serif` |
+| **Body**    | **Barlow**     | 300, 400, 500, 600 | `sans-serif` |
 
 **Google Fonts import:**
 
 ```html
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
+  rel="stylesheet"
+/>
 ```
 
 ### Type Scale
 
 All sizes in `px` for precision. Line heights and tracking are critical to the editorial feel.
 
-| Token                | Font        | Size   | Weight   | Line Height | Letter Spacing | Case      | Usage                           |
-| -------------------- | ----------- | ------ | -------- | ----------- | -------------- | --------- | ------------------------------- |
-| `display-xl`         | Bebas Neue  | 76px   | 400      | 0.92        | 0.04em         | Natural   | Page title / masthead           |
-| `display-lg`         | Bebas Neue  | 48px   | 400      | 0.95        | 0.03em         | Natural   | Section hero numbers            |
-| `display-md`         | Bebas Neue  | 28px   | 400      | 1.0         | 0.02em         | Natural   | Stat values, large data         |
-| `display-sm`         | Bebas Neue  | 22px   | 400      | 1.1         | 0.03em         | Natural   | List item titles, button labels |
-| `label-section`      | Barlow      | 11px   | 600      | 1.2         | 0.25em         | UPPERCASE | Section headers                 |
-| `label-category`     | Barlow      | 9px    | 600      | 1.2         | 0.25em         | UPPERCASE | Category / dateline labels      |
-| `label-nav`          | Barlow      | 10px   | 600      | 1.2         | 0.1em          | UPPERCASE | Bottom navigation labels        |
-| `body-base`          | Barlow      | 14px   | 400      | 1.6         | 0.01em         | Natural   | Body text, descriptions         |
-| `body-sm`            | Barlow      | 13px   | 300      | 1.6         | 0.01em         | Natural   | Subtitles, secondary copy       |
-| `body-xs`            | Barlow      | 11px   | 300/400  | 1.4         | 0              | Natural   | Tertiary info, metadata         |
-| `caption`            | Barlow      | 10px   | 500      | 1.2         | 0.05em         | UPPERCASE | Stat labels, footnotes          |
-| `timer-display`      | Bebas Neue  | 72px   | 400      | 1.0         | 0.02em         | Natural   | Active timer readout            |
-| `timer-secondary`    | Bebas Neue  | 36px   | 400      | 1.0         | 0.02em         | Natural   | Countdown numbers               |
-| `input-value`        | Barlow      | 16px   | 400      | 1.4         | 0              | Natural   | Form inputs                     |
-| `input-label`        | Barlow      | 12px   | 500      | 1.2         | 0.05em         | UPPERCASE | Form field labels               |
+| Token             | Font       | Size | Weight  | Line Height | Letter Spacing | Case      | Usage                           |
+| ----------------- | ---------- | ---- | ------- | ----------- | -------------- | --------- | ------------------------------- |
+| `display-xl`      | Bebas Neue | 76px | 400     | 0.92        | 0.04em         | Natural   | Page title / masthead           |
+| `display-lg`      | Bebas Neue | 48px | 400     | 0.95        | 0.03em         | Natural   | Section hero numbers            |
+| `display-md`      | Bebas Neue | 28px | 400     | 1.0         | 0.02em         | Natural   | Stat values, large data         |
+| `display-sm`      | Bebas Neue | 22px | 400     | 1.1         | 0.03em         | Natural   | List item titles, button labels |
+| `label-section`   | Barlow     | 11px | 600     | 1.2         | 0.25em         | UPPERCASE | Section headers                 |
+| `label-category`  | Barlow     | 9px  | 600     | 1.2         | 0.25em         | UPPERCASE | Category / dateline labels      |
+| `label-nav`       | Barlow     | 10px | 600     | 1.2         | 0.1em          | UPPERCASE | Bottom navigation labels        |
+| `body-base`       | Barlow     | 14px | 400     | 1.6         | 0.01em         | Natural   | Body text, descriptions         |
+| `body-sm`         | Barlow     | 13px | 300     | 1.6         | 0.01em         | Natural   | Subtitles, secondary copy       |
+| `body-xs`         | Barlow     | 11px | 300/400 | 1.4         | 0              | Natural   | Tertiary info, metadata         |
+| `caption`         | Barlow     | 10px | 500     | 1.2         | 0.05em         | UPPERCASE | Stat labels, footnotes          |
+| `timer-display`   | Bebas Neue | 72px | 400     | 1.0         | 0.02em         | Natural   | Active timer readout            |
+| `timer-secondary` | Bebas Neue | 36px | 400     | 1.0         | 0.02em         | Natural   | Countdown numbers               |
+| `input-value`     | Barlow     | 16px | 400     | 1.4         | 0              | Natural   | Form inputs                     |
+| `input-label`     | Barlow     | 12px | 500     | 1.2         | 0.05em         | UPPERCASE | Form field labels               |
 
 ### Typography Rules
 
@@ -74,51 +77,51 @@ All sizes in `px` for precision. Line heights and tracking are critical to the e
 
 #### Light Mode (Default)
 
-| Token                   | Hex         | Opacity Variants        | Usage                                   |
-| ----------------------- | ----------- | ----------------------- | --------------------------------------- |
-| `--bg-primary`          | `#F7F5F0`   | —                       | Page background (warm newsprint)        |
-| `--bg-surface`          | `#FFFFFF`   | —                       | Elevated surfaces (modals, sheets)      |
-| `--bg-nav`              | `#F7F5F0`   | 90% (with backdrop-blur)| Bottom nav background                   |
-| `--text-primary`        | `#1A1A1A`   | —                       | Headings, display text                  |
-| `--text-secondary`      | `#1A1A1A`   | 45%                     | Subtitles, descriptions                 |
-| `--text-tertiary`       | `#1A1A1A`   | 30%                     | Metadata, captions, nav inactive        |
-| `--text-muted`          | `#1A1A1A`   | 20%                     | Footnotes, disabled states              |
-| `--accent`              | `#0047FF`   | —                       | Editorial Blue — links, active states   |
-| `--accent-hover`        | `#0038CC`   | —                       | Buttons on hover                        |
-| `--accent-subtle`       | `#0047FF`   | 8%                      | Accent backgrounds (tags, highlights)   |
-| `--rule-heavy`          | `#1A1A1A`   | 100%                    | Thick section dividers (2px)            |
-| `--rule-light`          | `#1A1A1A`   | 15%                     | Thin content separators (1px)           |
-| `--rule-hairline`       | `#1A1A1A`   | 8%                      | List item borders                       |
-| `--surface-hover`       | `#1A1A1A`   | 2%                      | Row hover state                         |
-| `--button-primary-bg`   | `#1A1A1A`   | —                       | Primary CTA background                  |
-| `--button-primary-text` | `#F7F5F0`   | —                       | Primary CTA text                        |
-| `--success`             | `#1B7D3A`   | —                       | Positive indicators (weight increase)   |
-| `--warning`             | `#B45309`   | —                       | Caution indicators                      |
-| `--danger`              | `#C41E1E`   | —                       | Stop button, destructive actions        |
+| Token                   | Hex       | Opacity Variants         | Usage                                 |
+| ----------------------- | --------- | ------------------------ | ------------------------------------- |
+| `--bg-primary`          | `#F7F5F0` | —                        | Page background (warm newsprint)      |
+| `--bg-surface`          | `#FFFFFF` | —                        | Elevated surfaces (modals, sheets)    |
+| `--bg-nav`              | `#F7F5F0` | 90% (with backdrop-blur) | Bottom nav background                 |
+| `--text-primary`        | `#1A1A1A` | —                        | Headings, display text                |
+| `--text-secondary`      | `#1A1A1A` | 45%                      | Subtitles, descriptions               |
+| `--text-tertiary`       | `#1A1A1A` | 30%                      | Metadata, captions, nav inactive      |
+| `--text-muted`          | `#1A1A1A` | 20%                      | Footnotes, disabled states            |
+| `--accent`              | `#0047FF` | —                        | Editorial Blue — links, active states |
+| `--accent-hover`        | `#0038CC` | —                        | Buttons on hover                      |
+| `--accent-subtle`       | `#0047FF` | 8%                       | Accent backgrounds (tags, highlights) |
+| `--rule-heavy`          | `#1A1A1A` | 100%                     | Thick section dividers (2px)          |
+| `--rule-light`          | `#1A1A1A` | 15%                      | Thin content separators (1px)         |
+| `--rule-hairline`       | `#1A1A1A` | 8%                       | List item borders                     |
+| `--surface-hover`       | `#1A1A1A` | 2%                       | Row hover state                       |
+| `--button-primary-bg`   | `#1A1A1A` | —                        | Primary CTA background                |
+| `--button-primary-text` | `#F7F5F0` | —                        | Primary CTA text                      |
+| `--success`             | `#1B7D3A` | —                        | Positive indicators (weight increase) |
+| `--warning`             | `#B45309` | —                        | Caution indicators                    |
+| `--danger`              | `#C41E1E` | —                        | Stop button, destructive actions      |
 
 #### Dark Mode
 
-| Token                   | Hex         | Opacity Variants        | Usage                                   |
-| ----------------------- | ----------- | ----------------------- | --------------------------------------- |
-| `--bg-primary`          | `#141311`   | —                       | Page background (warm near-black)       |
-| `--bg-surface`          | `#1E1D1A`   | —                       | Elevated surfaces (modals, sheets)      |
-| `--bg-nav`              | `#141311`   | 90% (with backdrop-blur)| Bottom nav background                   |
-| `--text-primary`        | `#E8E5DE`   | —                       | Headings, display text                  |
-| `--text-secondary`      | `#E8E5DE`   | 50%                     | Subtitles, descriptions                 |
-| `--text-tertiary`       | `#E8E5DE`   | 30%                     | Metadata, captions, nav inactive        |
-| `--text-muted`          | `#E8E5DE`   | 18%                     | Footnotes, disabled states              |
-| `--accent`              | `#4D8AFF`   | —                       | Editorial Blue (brightened for dark bg)  |
-| `--accent-hover`        | `#6B9FFF`   | —                       | Buttons on hover                        |
-| `--accent-subtle`       | `#4D8AFF`   | 10%                     | Accent backgrounds (tags, highlights)   |
-| `--rule-heavy`          | `#E8E5DE`   | 80%                     | Thick section dividers (2px)            |
-| `--rule-light`          | `#E8E5DE`   | 12%                     | Thin content separators (1px)           |
-| `--rule-hairline`       | `#E8E5DE`   | 6%                      | List item borders                       |
-| `--surface-hover`       | `#E8E5DE`   | 4%                      | Row hover state                         |
-| `--button-primary-bg`   | `#E8E5DE`   | —                       | Primary CTA background (inverted)       |
-| `--button-primary-text` | `#141311`   | —                       | Primary CTA text (inverted)             |
-| `--success`             | `#34D164`   | —                       | Positive indicators (lightened)         |
-| `--warning`             | `#F5A623`   | —                       | Caution indicators (lightened)          |
-| `--danger`              | `#FF4545`   | —                       | Stop button, destructive actions        |
+| Token                   | Hex       | Opacity Variants         | Usage                                   |
+| ----------------------- | --------- | ------------------------ | --------------------------------------- |
+| `--bg-primary`          | `#141311` | —                        | Page background (warm near-black)       |
+| `--bg-surface`          | `#1E1D1A` | —                        | Elevated surfaces (modals, sheets)      |
+| `--bg-nav`              | `#141311` | 90% (with backdrop-blur) | Bottom nav background                   |
+| `--text-primary`        | `#E8E5DE` | —                        | Headings, display text                  |
+| `--text-secondary`      | `#E8E5DE` | 50%                      | Subtitles, descriptions                 |
+| `--text-tertiary`       | `#E8E5DE` | 30%                      | Metadata, captions, nav inactive        |
+| `--text-muted`          | `#E8E5DE` | 18%                      | Footnotes, disabled states              |
+| `--accent`              | `#4D8AFF` | —                        | Editorial Blue (brightened for dark bg) |
+| `--accent-hover`        | `#6B9FFF` | —                        | Buttons on hover                        |
+| `--accent-subtle`       | `#4D8AFF` | 10%                      | Accent backgrounds (tags, highlights)   |
+| `--rule-heavy`          | `#E8E5DE` | 80%                      | Thick section dividers (2px)            |
+| `--rule-light`          | `#E8E5DE` | 12%                      | Thin content separators (1px)           |
+| `--rule-hairline`       | `#E8E5DE` | 6%                       | List item borders                       |
+| `--surface-hover`       | `#E8E5DE` | 4%                       | Row hover state                         |
+| `--button-primary-bg`   | `#E8E5DE` | —                        | Primary CTA background (inverted)       |
+| `--button-primary-text` | `#141311` | —                        | Primary CTA text (inverted)             |
+| `--success`             | `#34D164` | —                        | Positive indicators (lightened)         |
+| `--warning`             | `#F5A623` | —                        | Caution indicators (lightened)          |
+| `--danger`              | `#FF4545` | —                        | Stop button, destructive actions        |
 
 ### Color Rules
 
@@ -187,29 +190,33 @@ The texture is applied to a `pointer-events-none fixed inset-0` overlay div.
 
 Use Tailwind's spacing utilities with these conventions:
 
-| Context                     | Spacing    | Tailwind       |
-| --------------------------- | ---------- | -------------- |
-| Page top padding            | 40px       | `pt-10`        |
-| Between section label + content | 12-20px | `mb-3` to `mb-5` |
-| Between list items          | 0 (borders only) | `space-y-0`, border-separated |
-| List item vertical padding  | 16px       | `py-4`         |
-| Section vertical padding    | 24-32px    | `pt-6 pb-6` or `pt-6 pb-8` |
-| Between rules and content   | 20-24px    | `mt-5` / `pt-6` |
-| Bottom safe area            | 80px       | `h-20`         |
-| Two-column gutter           | 20px       | `pr-5` / `pl-5` |
+| Context                         | Spacing          | Tailwind                      |
+| ------------------------------- | ---------------- | ----------------------------- |
+| Page top padding                | 40px             | `pt-10`                       |
+| Between section label + content | 12-20px          | `mb-3` to `mb-5`              |
+| Between list items              | 0 (borders only) | `space-y-0`, border-separated |
+| List item vertical padding      | 16px             | `py-4`                        |
+| Section vertical padding        | 24-32px          | `pt-6 pb-6` or `pt-6 pb-8`    |
+| Between rules and content       | 20-24px          | `mt-5` / `pt-6`               |
+| Bottom safe area                | 80px             | `h-20`                        |
+| Two-column gutter               | 20px             | `pr-5` / `pl-5`               |
 
 ### Grid Patterns
 
 **Two-column with sidebar** (used on home page):
+
 ```
 grid grid-cols-[1fr_auto] gap-0
 ```
+
 Left column holds the primary action; right column is a narrow stats sidebar separated by a vertical rule (`border-l`).
 
 **Stats grid** (used on stats page):
+
 ```
 grid grid-cols-3 gap-0
 ```
+
 Equal columns separated by vertical rules, each containing a single stat.
 
 ---
@@ -220,11 +227,11 @@ Equal columns separated by vertical rules, each containing a single stat.
 
 Rule lines are the primary structural element — they replace cards and shadows.
 
-| Type        | Height | Color / Opacity                  | Usage                              |
-| ----------- | ------ | -------------------------------- | ---------------------------------- |
-| **Heavy**   | 2px    | `--text-primary` / 100%          | Major section breaks               |
-| **Light**   | 1px    | `--text-primary` / 15%           | Between content sections           |
-| **Hairline**| 1px    | `--text-primary` / 8%            | Between list items (via border)    |
+| Type         | Height | Color / Opacity         | Usage                           |
+| ------------ | ------ | ----------------------- | ------------------------------- |
+| **Heavy**    | 2px    | `--text-primary` / 100% | Major section breaks            |
+| **Light**    | 1px    | `--text-primary` / 15%  | Between content sections        |
+| **Hairline** | 1px    | `--text-primary` / 8%   | Between list items (via border) |
 
 ```html
 <!-- Heavy rule -->
@@ -239,16 +246,17 @@ Rule lines are the primary structural element — they replace cards and shadows
 Always uppercase, always tracked wide, always small.
 
 ```html
-<p class="mb-3 text-[9px] font-semibold tracking-[0.25em] text-[--accent] uppercase">
+<p
+  class="mb-3 text-[9px] font-semibold tracking-[0.25em] text-[--accent] uppercase"
+>
   Today's Session
 </p>
 ```
 
 Variant — neutral (no accent):
+
 ```html
-<h2 class="text-[11px] font-semibold tracking-[0.25em] uppercase">
-  Routines
-</h2>
+<h2 class="text-[11px] font-semibold tracking-[0.25em] uppercase">Routines</h2>
 ```
 
 ### 5.3 Buttons
@@ -462,13 +470,23 @@ Used sparingly — only for modals, bottom sheets, or overlaid content. Never fo
 
 ```css
 @keyframes c-fade-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes c-fade-in-up {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 ```
 
@@ -478,20 +496,21 @@ These are the only two keyframes needed. The editorial style is restrained — n
 
 Content enters sequentially with staggered delays, simulating a page being "typeset":
 
-| Element           | Animation      | Duration | Delay    | Easing   |
-| ----------------- | -------------- | -------- | -------- | -------- |
-| Dateline          | `c-fade-in`    | 0.6s     | 0s       | ease-out |
-| First rule        | `c-fade-in`    | 0.6s     | 0.05s    | ease-out |
-| Masthead title    | `c-fade-in-up` | 0.7s     | 0.15s    | ease-out |
-| Subtitle          | `c-fade-in-up` | 0.6s     | 0.3s     | ease-out |
-| Thick rule        | `c-fade-in`    | 0.6s     | 0.35s    | ease-out |
-| Primary action    | `c-fade-in-up` | 0.6s     | 0.4s     | ease-out |
-| Sidebar           | `c-fade-in-up` | 0.6s     | 0.5s     | ease-out |
-| Section header    | `c-fade-in`    | 0.6s     | 0.6s     | ease-out |
-| List items        | `c-fade-in-up` | 0.5s     | 0.7s + (i * 0.08s) | ease-out |
-| Footer content    | `c-fade-in`    | 0.6s     | 1.0s     | ease-out |
+| Element        | Animation      | Duration | Delay               | Easing   |
+| -------------- | -------------- | -------- | ------------------- | -------- |
+| Dateline       | `c-fade-in`    | 0.6s     | 0s                  | ease-out |
+| First rule     | `c-fade-in`    | 0.6s     | 0.05s               | ease-out |
+| Masthead title | `c-fade-in-up` | 0.7s     | 0.15s               | ease-out |
+| Subtitle       | `c-fade-in-up` | 0.6s     | 0.3s                | ease-out |
+| Thick rule     | `c-fade-in`    | 0.6s     | 0.35s               | ease-out |
+| Primary action | `c-fade-in-up` | 0.6s     | 0.4s                | ease-out |
+| Sidebar        | `c-fade-in-up` | 0.6s     | 0.5s                | ease-out |
+| Section header | `c-fade-in`    | 0.6s     | 0.6s                | ease-out |
+| List items     | `c-fade-in-up` | 0.5s     | 0.7s + (i \* 0.08s) | ease-out |
+| Footer content | `c-fade-in`    | 0.6s     | 1.0s                | ease-out |
 
 **Applied via inline styles:**
+
 ```tsx
 style={{ animation: "c-fade-in-up 0.6s ease-out 0.4s both" }}
 ```
@@ -500,14 +519,14 @@ The `both` fill mode ensures elements remain invisible before their animation st
 
 ### Interaction Transitions
 
-| Interaction            | Property     | Duration | Easing     |
-| ---------------------- | ------------ | -------- | ---------- |
-| Button hover (bg)      | all          | 200ms    | ease       |
-| Button press (scale)   | transform    | 100ms    | ease       |
-| Arrow slide on hover   | transform    | 200ms    | ease       |
-| Nav item color change  | color        | 200ms    | ease       |
-| Input focus border     | border-color | 150ms    | ease       |
-| Toggle thumb slide     | transform    | 200ms    | ease       |
+| Interaction           | Property     | Duration | Easing |
+| --------------------- | ------------ | -------- | ------ |
+| Button hover (bg)     | all          | 200ms    | ease   |
+| Button press (scale)  | transform    | 100ms    | ease   |
+| Arrow slide on hover  | transform    | 200ms    | ease   |
+| Nav item color change | color        | 200ms    | ease   |
+| Input focus border    | border-color | 150ms    | ease   |
+| Toggle thumb slide    | transform    | 200ms    | ease   |
 
 ### Animation Rules
 
@@ -522,15 +541,15 @@ The `both` fill mode ensures elements remain invisible before their animation st
 
 **No icons.** The editorial design uses text characters and typographic symbols instead:
 
-| Action       | Symbol | Unicode |
-| ------------ | ------ | ------- |
-| Navigate     | →      | U+2192  |
-| Back         | ←      | U+2190  |
-| Dropdown     | ▾      | U+25BE  |
-| Separator    | ·      | U+00B7  |
-| Increase     | ↑      | U+2191  |
-| Decrease     | ↓      | U+2193  |
-| Maintain     | =      | U+003D  |
+| Action    | Symbol | Unicode |
+| --------- | ------ | ------- |
+| Navigate  | →      | U+2192  |
+| Back      | ←      | U+2190  |
+| Dropdown  | ▾      | U+25BE  |
+| Separator | ·      | U+00B7  |
+| Increase  | ↑      | U+2191  |
+| Decrease  | ↓      | U+2193  |
+| Maintain  | =      | U+003D  |
 
 If absolutely necessary (e.g., for a chart library), use simple SVG line-art icons with 1.5px stroke, matching `--text-primary` color.
 
@@ -544,44 +563,44 @@ Dark mode is activated via the `prefers-color-scheme: dark` media query or a man
 
 ```css
 :root {
-  --bg-primary: #F7F5F0;
-  --bg-surface: #FFFFFF;
-  --text-primary: #1A1A1A;
+  --bg-primary: #f7f5f0;
+  --bg-surface: #ffffff;
+  --text-primary: #1a1a1a;
   --text-secondary: rgba(26, 26, 26, 0.45);
-  --text-tertiary: rgba(26, 26, 26, 0.30);
-  --text-muted: rgba(26, 26, 26, 0.20);
-  --accent: #0047FF;
-  --accent-hover: #0038CC;
-  --rule-heavy: #1A1A1A;
+  --text-tertiary: rgba(26, 26, 26, 0.3);
+  --text-muted: rgba(26, 26, 26, 0.2);
+  --accent: #0047ff;
+  --accent-hover: #0038cc;
+  --rule-heavy: #1a1a1a;
   --rule-light: rgba(26, 26, 26, 0.15);
   --rule-hairline: rgba(26, 26, 26, 0.08);
   --surface-hover: rgba(26, 26, 26, 0.02);
-  --button-primary-bg: #1A1A1A;
-  --button-primary-text: #F7F5F0;
-  --success: #1B7D3A;
-  --warning: #B45309;
-  --danger: #C41E1E;
+  --button-primary-bg: #1a1a1a;
+  --button-primary-text: #f7f5f0;
+  --success: #1b7d3a;
+  --warning: #b45309;
+  --danger: #c41e1e;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-primary: #141311;
-    --bg-surface: #1E1D1A;
-    --text-primary: #E8E5DE;
-    --text-secondary: rgba(232, 229, 222, 0.50);
-    --text-tertiary: rgba(232, 229, 222, 0.30);
+    --bg-surface: #1e1d1a;
+    --text-primary: #e8e5de;
+    --text-secondary: rgba(232, 229, 222, 0.5);
+    --text-tertiary: rgba(232, 229, 222, 0.3);
     --text-muted: rgba(232, 229, 222, 0.18);
-    --accent: #4D8AFF;
-    --accent-hover: #6B9FFF;
-    --rule-heavy: rgba(232, 229, 222, 0.80);
+    --accent: #4d8aff;
+    --accent-hover: #6b9fff;
+    --rule-heavy: rgba(232, 229, 222, 0.8);
     --rule-light: rgba(232, 229, 222, 0.12);
     --rule-hairline: rgba(232, 229, 222, 0.06);
     --surface-hover: rgba(232, 229, 222, 0.04);
-    --button-primary-bg: #E8E5DE;
+    --button-primary-bg: #e8e5de;
     --button-primary-text: #141311;
-    --success: #34D164;
-    --warning: #F5A623;
-    --danger: #FF4545;
+    --success: #34d164;
+    --warning: #f5a623;
+    --danger: #ff4545;
   }
 }
 ```
@@ -603,10 +622,10 @@ The app is mobile-first with a single-column layout. The `max-w-lg` (512px) cont
 
 ### Breakpoints
 
-| Breakpoint | Behavior                                                     |
-| ---------- | ------------------------------------------------------------ |
+| Breakpoint | Behavior                                                    |
+| ---------- | ----------------------------------------------------------- |
 | < 375px    | `display-xl` scales down to 60px. Two-column layout stacks. |
-| 375–512px  | Default mobile layout. All specs above apply.                |
+| 375–512px  | Default mobile layout. All specs above apply.               |
 | > 512px    | Content centered in `max-w-lg`. Background fills viewport.  |
 
 ### Touch Targets
@@ -640,13 +659,13 @@ All design tokens use the `--` prefix with kebab-case: `--bg-primary`, `--text-s
 Use Tailwind's arbitrary value syntax to reference tokens:
 
 ```html
-<div class="bg-[var(--bg-primary)] text-[var(--text-primary)]">
+<div class="bg-[var(--bg-primary)] text-[var(--text-primary)]"></div>
 ```
 
 For one-off values that don't need theming, use direct hex values in Tailwind arbitrary syntax:
 
 ```html
-<div class="text-[#0047FF]">
+<div class="text-[#0047FF]"></div>
 ```
 
 ### Animation Classes
